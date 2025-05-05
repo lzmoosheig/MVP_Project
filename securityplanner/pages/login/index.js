@@ -8,6 +8,8 @@ import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 import {createTheme, ThemeProvider} from "@mui/material/styles";
+import { FormEvent } from 'react'
+import { useRouter } from 'next/router'
 
 function Copyright(props) {
     return (
@@ -38,9 +40,28 @@ const defaultTheme = createTheme({
     },
 });
 
-export default function Login() {
-    const [username, setUsername] = React.useState();
-    const [password, setPassword] = React.useState();
+export default function LoginPage() {
+    const router = useRouter()
+
+    async function handleSubmit(event) {
+        event.preventDefault()
+
+        const formData = new FormData(event.target.form)
+        const email = formData.get('email')
+        const password = formData.get('password')
+
+        const response = await fetch('/api/auth/login', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ email, password }),
+        })
+
+        if (response.ok) {
+            router.push('/')
+        } else {
+            // Handle errors
+        }
+    }
 
     return (
         <ThemeProvider theme={defaultTheme}>
@@ -71,12 +92,11 @@ export default function Login() {
                             margin="normal"
                             required
                             fullWidth
-                            id="username"
-                            label="Nom d'utilisateur"
-                            name="username"
-                            autoComplete="username"
+                            id="email"
+                            label="Email"
+                            name="email"
+                            autoComplete="email"
                             autoFocus
-                            onChange={(e) => setUsername(e.target.value)}
                         />
                         <TextField
                             margin="normal"
@@ -87,13 +107,13 @@ export default function Login() {
                             type="password"
                             id="password"
                             autoComplete="current-password"
-                            onChange={(e) => setPassword(e.target.value)}
                         />
                         <Button
                             type="submit"
                             fullWidth
                             variant="contained"
                             sx={{mt: 3, mb: 2}}
+                            onClick={handleSubmit}
                         >
                             Connexion
                         </Button>
@@ -105,7 +125,7 @@ export default function Login() {
     );
 }
 
-Login.getLayout = function getLayout(login) {
+LoginPage.getLayout = function getLayout(login) {
     return (
         <>{login}</>
     )
