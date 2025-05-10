@@ -9,7 +9,7 @@ import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 import {createTheme, ThemeProvider} from "@mui/material/styles";
-import {router} from "next/client";
+import {useRouter} from 'next/navigation'
 
 function Copyright(props) {
     return (
@@ -41,6 +41,8 @@ const defaultTheme = createTheme({
 });
 
 export default function LoginPage() {
+    const router = useRouter()
+
     async function handleSubmit(event) {
         event.preventDefault()
 
@@ -62,7 +64,7 @@ export default function LoginPage() {
     }
 
     return (
-        <html lang="en">
+        <html lang="fr">
         <body>
         <ThemeProvider theme={defaultTheme}>
             <Container component="main" maxWidth="xs">

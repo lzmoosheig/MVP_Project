@@ -158,7 +158,7 @@ export default function RootLayout({children}) {
                             <ListItemIcon>
                                 <HomeIcon/>
                             </ListItemIcon>
-                            <ListItemText primary="Home"/>
+                            <ListItemText primary="Page"/>
                         </ListItemButton>
                     </List>
                 </Drawer>
@@ -186,3 +186,5 @@ export default function RootLayout({children}) {
         </html>
     );
 }
+
+

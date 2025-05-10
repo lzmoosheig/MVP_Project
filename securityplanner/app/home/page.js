@@ -1,16 +1,16 @@
 import React from "react";
 import Grid from "@mui/material/Grid";
 import Typography from "@mui/material/Typography";
-import prisma from "@/lib/prisma";
+//import prisma from "@/lib/prisma";
 
-export default async function Home() {
-    const users = await prisma.user.findMany()
+export default async function Page() {
+    const events = await prisma.event.findMany()
     return (
         <Grid item xs={12}>
             <Typography component="h2" variant="h6" gutterBottom>
-                {users.map((user) => (
-                    <div key={user.id}>
-                        {user.firstName} - {user.email}
+                {events.map((event) => (
+                    <div key={event.id}>
+                        {event.name}
                     </div>
                 ))}
             </Typography>
