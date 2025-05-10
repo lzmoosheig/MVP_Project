@@ -148,7 +148,7 @@ Problème c'est pas le fonctionnement c'est les gens, le nombre trop élevé d'�
 
 ![wireframes](/docs/img/wireframes.png)
 
-#### Home page
+#### Page page
 
 Pour les planificateurs : 
 

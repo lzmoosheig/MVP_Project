@@ -1,7 +1,6 @@
 import React from "react";
 import Grid from "@mui/material/Grid";
 import Typography from "@mui/material/Typography";
-//import prisma from "@/lib/prisma";
 
 export default async function Page() {
     const events = await prisma.event.findMany()
