@@ -21,5 +21,5 @@ export async function middleware(req) {
 }
 
 export const config = {
-    matcher: ["/home"],
+  matcher: ["/home", "/profile", "/planning/:path*"],
 };
