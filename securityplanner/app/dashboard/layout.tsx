@@ -128,26 +128,28 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
           </Toolbar>
           <Divider />
           <List component="nav">
-            <NavLink href="/dashboard/home">
-              <ListItemButton component="a">
+              <NavLink href="/dashboard/home">
                 <ListItemIcon><HomeIcon /></ListItemIcon>
                 <ListItemText primary="Home" />
-              </ListItemButton>
-            </NavLink>
-            <NavLink href="/dashboard/profile">
-              <ListItemButton component="a">
+              </NavLink>
+
+              <NavLink href="/dashboard/profile">
                 <ListItemIcon><AccountCircleIcon /></ListItemIcon>
                 <ListItemText primary="Mon profil" />
-              </ListItemButton>
-            </NavLink>
-            <ListItemButton onClick={async () => {
-              await fetch("/api/auth/logout", { method: "POST" });
-              window.location.href = "/login";
-            }}>
-              <ListItemIcon><LogoutIcon /></ListItemIcon>
-              <ListItemText primary="Logout" />
-            </ListItemButton>
-          </List>
+              </NavLink>
+
+              <NavLink
+                href="#"
+                onClick={async (e) => {
+                  e.preventDefault();
+                  await fetch("/api/auth/logout", { method: "POST" });
+                  window.location.href = "/login";
+                }}
+              >
+                <ListItemIcon><LogoutIcon /></ListItemIcon>
+                <ListItemText primary="Logout" />
+              </NavLink>
+            </List>
         </Drawer>
         <Box
           component="main"

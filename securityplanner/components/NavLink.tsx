@@ -4,7 +4,9 @@ import { forwardRef } from "react";
 import Link, { LinkProps } from "next/link";
 import { ListItemButton, ListItemButtonProps } from "@mui/material";
 
-type Props = ListItemButtonProps & LinkProps;
+type Props = ListItemButtonProps & LinkProps & {
+  onClick?: () => void;
+};
 
 const NavLink = forwardRef<HTMLAnchorElement, Props>((props, ref) => {
   const {
@@ -14,6 +16,7 @@ const NavLink = forwardRef<HTMLAnchorElement, Props>((props, ref) => {
     shallow,
     prefetch,
     locale,
+    onClick,
     ...rest
   } = props;
 
@@ -27,6 +30,7 @@ const NavLink = forwardRef<HTMLAnchorElement, Props>((props, ref) => {
       shallow={shallow}
       prefetch={prefetch}
       locale={locale}
+      onClick={onClick}
       {...rest}
     />
   );
