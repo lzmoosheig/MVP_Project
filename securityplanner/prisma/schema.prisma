@@ -36,11 +36,23 @@ model User {
   Schedules   Schedule[]
 }
 
+
 model Event {
-  id        Int         @id @default(autoincrement())
-  name      String
-  startDate DateTime
-  endDate   DateTime
+  id             Int       @id @default(autoincrement())
+  name           String
+  description    String?
+  startDate      DateTime
+  endDate        DateTime
+  location       String?  
+  city           String? 
+  contactName    String?
+  contactPhone   String?
+  instructions   String?
+  requiredAgents Int?
+  eventType      String?
+  isCritical     Boolean   @default(false)
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime? 
   Schedules Schedule[]
 }
 
