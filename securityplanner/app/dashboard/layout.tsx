@@ -20,8 +20,8 @@ import ListItemText from "@mui/material/ListItemText";
 import HomeIcon from "@mui/icons-material/Home";
 import LogoutIcon from "@mui/icons-material/Logout";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
-import Link from "next/link";
 import NavLink from "@/components/NavLink";
+import 'leaflet/dist/leaflet.css';
 
 const drawerWidth = 240;
 

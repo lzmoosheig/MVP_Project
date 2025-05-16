@@ -4,9 +4,12 @@ import { jwtVerify } from "jose";
 import Grid from "@mui/material/Grid";
 import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
-import Paper from "@mui/material/Paper";
+import Card from "@mui/material/Card";
+import CardActionArea from "@mui/material/CardActionArea";
+import CardContent from "@mui/material/CardContent";
 import prisma from "@/lib/prisma";
 import { format } from "date-fns";
+import NavLink from "@/components/NavLink";
 
 const secret = new TextEncoder().encode(process.env.SESSION_SECRET);
 
@@ -28,7 +31,6 @@ export default async function Page() {
     console.error("Erreur de vérification JWT :", err);
   }
 
-  // Récupérer l'utilisateur
   const user = await prisma.user.findUnique({
     where: { email },
   });
@@ -39,12 +41,11 @@ export default async function Page() {
 
   userId = user.id;
 
-  // Récupérer les événements liés à cet utilisateur (via Schedule)
   const schedules = await prisma.schedule.findMany({
     where: {
       userId,
       endDate: {
-        gte: new Date(), // seulement les événements à venir
+        gte: new Date(),
       },
     },
     include: {
@@ -66,21 +67,40 @@ export default async function Page() {
       </Typography>
 
       {schedules.length === 0 ? (
-        <Typography variant="body1">Aucun événement prévu.</Typography>
+        <Typography>Aucun événement prévu.</Typography>
       ) : (
-        <Grid container spacing={2}>
+        <Grid
+          container
+          spacing={3}
+          sx={{
+            display: "grid",
+            gridTemplateColumns: {
+              xs: "1fr", // mobile
+              sm: "1fr", // tablette portrait
+              md: "1fr 1fr", // tablette paysage et +
+            },
+          }}
+        >
           {schedules.map((schedule) => (
-            <Grid item xs={12} md={6} lg={4} key={schedule.id}>
-              <Paper elevation={3} sx={{ p: 2 }}>
-                <Typography variant="h6" gutterBottom>
-                  {schedule.event.name}
-                </Typography>
-                <Typography variant="body2" color="textSecondary">
-                  Du {format(schedule.startDate, "dd/MM/yyyy")} au{" "}
-                  {format(schedule.endDate, "dd/MM/yyyy")}
-                </Typography>
-              </Paper>
-            </Grid>
+            <Card
+              key={schedule.id}
+              elevation={3}
+              sx={{ m: 1 }}
+              component={NavLink}
+              href={`/dashboard/event/${schedule.event.id}`}
+            >
+              <CardActionArea>
+                <CardContent>
+                  <Typography variant="h6" gutterBottom>
+                    {schedule.event.name}
+                  </Typography>
+                  <Typography variant="body2" color="textSecondary">
+                    Du {format(schedule.startDate, "dd/MM/yyyy")} au{" "}
+                    {format(schedule.endDate, "dd/MM/yyyy")}
+                  </Typography>
+                </CardContent>
+              </CardActionArea>
+            </Card>
           ))}
         </Grid>
       )}
