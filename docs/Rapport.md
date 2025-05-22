@@ -10,7 +10,7 @@ En une phrase, la problèmatique est la **complexité dans la planification hora
 
 ### Objectifs du projet
 
-L'objectif principal du projet est de réduire l'effort du planificateur et lui faire gagner du temps tout en minimisant le risque d'erreur humaine. Pour cela, une application permettrait de centraliser les données des agents et ainsi simplifier le travail du planificateur.
+L'objectif principal du projet est de réduire l'effort du planificateur et lui faire gagner du temps tout en minimisant le risque d'erreur humaine. Pour cela, une application permettrait de centraliser les données des agents et ainsi simplifier le travail du planificateur. D'autre part, l'application permettrait aux agents de gérer leurs disponibilités de manière autonome et de les transmettre au planificateur.
 
 ## Membres de l'équipe
 
@@ -26,63 +26,68 @@ L'objectif principal du projet est de réduire l'effort du planificateur et lui 
 
 ## Présentation de l'idée
 
-Nous envisageons de développer une application visant à simplifier la planification des agents de sécurité. Actuellement, dans certaines entreprises, cette gestion est particulièrement complexe et exige des efforts considérables de la part du planificateur. Actuellement, la planification repose sur une immense feuille Excel, et le planificateur doit vérifier manuellement chaque message de ses agents pour connaître leur disponibilité. Ce processus, particulièrement chronophage, pourrait être grandement optimisé, permettant ainsi un gain de temps considérable pour le planificateur.
+Notre idée est de créer une application web qui permettrait aux agents de sécurité de gérer leurs disponibilités et de les transmettre au planificateur. Le planificateur pourrait ainsi visualiser les disponibilités des agents et attribuer les plages horaires en toute simplicité. L'application serait accessible via un navigateur web et serait responsive pour s'adapter à tous les appareils (mobile, tablette, desktop).
+L'application serait divisée en deux parties : une partie pour le planificateur et une partie pour les agents. Le planificateur aurait accès à un calendrier avec les disponibilités des agents, tandis que les agents pourraient gérer leurs disponibilités et consulter leur planning.
 
 ## Secteur de marché
-Le secteur de marché de cette application se situerait principalement dans **la gestion des ressources humaines et la planification du personnel**, avec un focus particulier sur les **services de sécurité privée**. Voici les principaux segments concernés :  
 
-1. **Sécurité privée et surveillance** : Entreprises de gardiennage, sociétés de sécurité privée, services de protection rapprochée.  
-2. **Gestion des effectifs et RH** : Solutions de gestion des plannings pour entreprises ayant des horaires flexibles ou des équipes en rotation.  
-3. **Entreprises de facility management** : Gestion des agents de sécurité au sein des grandes infrastructures (hôpitaux, aéroports, centres commerciaux).  
-4. **Événementiel** : Entreprises gérant la sécurité pour des événements temporaires.  
-5. **Secteur public** : Municipalités et administrations ayant des services de sécurité internes.  
+Le secteur de marché de cette application se situerait principalement dans **la gestion des ressources humaines et la planification du personnel**, avec un focus particulier sur les **services de sécurité privée**. Voici les principaux segments concernés :
 
-
-"MAYBE USEFUL LATER?"
-> Le marché peut être abordé via un modèle **SaaS (Software as a Service)**, avec un abonnement mensuel ou annuel, ou via une **licence unique** pour des entreprises souhaitant une solution en interne.
-
+1. **Sécurité privée et surveillance** : entreprises de gardiennage, sociétés de sécurité privée, services de protection rapprochée.
+2. **Gestion des effectifs et RH** : solutions de gestion des plannings pour entreprises ayant des horaires flexibles ou des équipes en rotation.
+3. **Entreprises de facility management** : gestion des agents de sécurité au sein des grandes infrastructures (hôpitaux, aéroports, centres commerciaux).
+4. **Événementiel** : entreprises gérant la sécurité pour des événements temporaires.
+5. **Secteur public** : municipalités et administrations ayant des services de sécurité internes.
 
 ## Public cible
 
+Le public cible de cette application est constitué principalement de deux groupes : les planificateurs et les agents de sécurité.
+
+1. **Planificateurs** : responsables de la gestion des plannings et de l'attribution des plages horaires aux agents. Ils sont souvent confrontés à des défis liés à la complexité de la planification, à la gestion des disponibilités et à la communication avec les agents.
+
+2. **Agents de sécurité** : professionnels chargés de la surveillance et de la sécurité sur le terrain. Ils doivent gérer leurs disponibilités et communiquer avec le planificateur pour s'assurer qu'ils sont affectés aux bons événements.
+
+### Personae
+
+#### Planificateur
+
+- **Nom** : Jean Dupont
+- **Âge** : 35 ans
+- **Poste** : Responsable de la planification des agents de sécurité
+- **Contexte** : Jean travaille pour une entreprise de sécurité privée et est responsable de la gestion des plannings des agents. Il utilise actuellement un fichier Excel pour gérer les disponibilités, mais il trouve cela compliqué et chronophage.
+- **Besoins** : Jean a besoin d'une solution qui lui permette de centraliser les disponibilités des agents, de simplifier la communication avec eux et de réduire le risque d'erreur humaine dans la planification.
+- **Objectifs** : Jean souhaite gagner du temps dans la gestion des plannings, réduire le stress lié à la planification et améliorer la satisfaction des agents.
+
+#### Agent de sécurité
+
+- **Nom** : Pierre Martin
+- **Âge** : 28 ans
+- **Poste** : Agent de sécurité
+- **Contexte** : Pierre travaille pour une entreprise de sécurité privée et est souvent affecté à des événements variés. Il doit gérer ses disponibilités et communiquer avec le planificateur pour s'assurer qu'il est affecté aux bons événements.
+- **Besoins** : Pierre a besoin d'une solution qui lui permette de gérer facilement ses disponibilités, de consulter son planning et de communiquer avec le planificateur.
+- **Objectifs** : Pierre souhaite avoir un moyen simple de gérer ses disponibilités, de consulter son planning et de recevoir des notifications concernant les événements à venir.
+
 ## Questionnaires et hypothèses à valider avec le public cible
+
+Nous avons réfléchi à plusieurs questions en essayant d'être le plus exhaustif possible. Lors de nos interviews, nous avons commencé par poser des questions ouvertes pour comprendre le fonctionnement actuel de la planification et les besoins des agents. Ensuite, nous avons posé des questions plus spécifiques sur les fonctionnalités souhaitées dans l'application. Le tout en évitant de poser des questions orientées pour ne pas influencer les réponses.
 
 ### Planificateur
 
 > Quelle est votre méthode de travail actuelle? (workflow)
-1. la demande du client (Excel comme premier logiciel, entrer les services et les différents horaire, début du mois pour les disponibilités, demande sur whatsapp, compliqué de faire le suivi, créer un groupe whatsapp pour chaque mandat => beaucoup de groupe. Une fois confirmé, il rentre sur excel que c'est bon, mettre dans un CMS, trois plateformes différentes pour ça => double saisie, erreur humaines)
 
-> Qu'est-ce qui fait que la planification est difficile
-
-multitasking biaisé car la méthode n'est pas performante. Méthodologie pas optimisée.
+> Qu'est-ce qui fait que la planification est difficile?
 
 > Qu'est-ce qu'il se passe si un agent annonce qu'il ne peut pas venir?
 
-regarder les dispos, depuis le téléphone, contacter les agents, mettre à jour sur les trois plateforme. 
-
 > Quelle est la fréquence (semaine, mois) des planifications?
-
-planning évoluant de jour en jour, ça change très régulierement, 
 
 > Quelles sont les informations necéssaires concernant les agents?
 
-Dépend de la distance du service, IKIT: indémnisation de temps de trajet et kilomètre, essayer de mettre un véhicule de service, au feeling avec l'expérience, demander si ils ont besoin de radio, 
-
-> Véhicule partagé:
-
-Se fait par téléphone, désigne un responsable véhicule, donner un rdv 
+> Y-a-t'il du matériel à fournir aux agents?
 
 > Y-a-t'il différents types d'agents?
 
-Agents armés, surveillance, 
-
-
-> Si vous aviez une application pour la planification, à quoi celle-ci ressemblerait? 
-
-nature de la manif, donner l'adresse, le point de contact, 
-
-
-
-
+> Si vous aviez une application pour la planification, à quoi celle-ci ressemblerait?
 
 ### Agent
 
@@ -96,97 +101,75 @@ nature de la manif, donner l'adresse, le point de contact,
 
 > Cela vous dérange-t'il de devoir créer un compte?
 
-#### Justin
-proposition de planning des 2 et envoie au responsable quand ils se mettent d'accord
-liste des dates et envoi par mail -> chiant par msg avec l'autre puis tout recopier pour envoyer au responsable
-
-arrange avec l'autre quand imprévu sinon compté absence
-
-pas efficace et oubli du planificateur d'envoyer le planning et oubli de l'autre une fois qui avait échangé
-
-manque un truc centralisé -> simple et efficace
-
-Dérange pas de faire un compte
-
-#### Leonard
-1) Surveillance, ronde, garder des portes pendant des événements sportifs (foot), concerts, (Securitas Lausanne)
-
-2) Calendrier numérique via site web (mobile), pas très très bien faite => affichage téléphone fucked up, indique les dispos (tel jour je suis là), c'est eux qui t'appelle, connexion avec le numéro d'agent et un mdp. 
-
-Comment l'application pourrait être améliorée: ergonomique sur le tel, sorte de menu burger avec planif, calendrier et événements à venir, messages => pas souvent utilisé, plutôt appel
-
-3) Appeler la planification, prefere savoir en avance (au moins 7 jours dans le contrat), sous urgence => les planificateurs se démerdent pour trouver un remplaçant, si c'est trop dernière minute => attende avant de confirmer que ça soit bon. Les planificateurs râlaient etc..
-
-4) Oui, ça marchait plutot bien, simple. Recherche de matériel à Lausanne même si le truc est pas à Loz. Mettre le matériel directement sur place si les agents restent longtemps là (exemple: Manor 7 mois)
-
-5) Non, pas besoin dans ce cas là. Assez bien fait, pour prouver qu'on est sur place (il fallait entrer un code qui était sur une feuille de mission).
-
-#### André
-1) Travail service d'ordre, zone à risque, gros événement de fête, bcp à la gare de Fribourg en général, service de nuit pour assurer que les chauffeurs soit en sécurité
-
-2) Site web dediée à la gestion de l'entreprise (communiqué direction), partie calendrier (demande vacances ou dire les dispos) => sur téléphone, deux apps web (mobile et desktop), on dit je ne suis pas dispo de tel à tel heure, dire les dispo. Les slots non alloué peuvent être attribué
-
-3) Essaie de trouver un remplacant (envoyer un message à qqn), envoi d'un mail à la planificatrice, soit elle trouvait pour toi si tu dis ça bien à l'avance, complexité à trouver un remplacant
-
-4) ça se passait bien, possibilité de dire qu'on est pas dispo pendant plusieurs mois et ça ne pose pas problème
-
-5) Identifiant (numéro d'agent), pour toute la gestion, communication direction, le salaire n'était pas reçu la dessus
-
-Formation de 2/3j, selon le physique, on ne peut pas prendre tout les services
-
-Problème c'est pas le fonctionnement c'est les gens, le nombre trop élevé d'évenements
+> Si vous aviez une application pour la planification, à quoi celle-ci ressemblerait?
 
 ## Analyse des retours du public cible
 
 ### Retours des planificateurs
 
+De manière générale, les planificateurs ont exprimé le besoin d'une solution centralisée pour gérer les disponibilités des agents. Ils ont souligné la complexité de la planification actuelle, notamment en raison de la communication par message. Ils souhaitent une application qui leur permette de visualiser facilement les disponibilités des agents et d'attribuer les plages horaires sans effort.
+
+Nous avons également interviewé des planificateurs ayant déjà une application dédiée à la gestion des plannings. Dans l'ensemble, ils trouvent que leur application fonctionne très bien, mais qu'elle pourrait être améliorée en termes d'ergonomie et de fonctionnalités.
+
 ### Retours des agents
+
+La majorité des agents ont dit être satisfaits de la manière dont ils transmettent leurs disponibilités au planificateur. En effet, ceux-ci n'ont pas de difficulté à communiquer avec le planificateur par message ou via l'application déjà existante. Nous en avons conclu que le problème ne se situe pas au niveau de la communication entre le planificateur et les agents, mais plutôt au niveau de la gestion des disponibilités par le planificateur.
+
+Certains agents nous ont fait part de leur ressenti concernant les planificateurs. Selon eux, le problème n'est pas la gestion des disponibilités des agents, mais plutôt le nombre d'événements à planifier. Cela nous a amené à réfléchir à la possibilité d'intégrer une fonctionnalité de gestion des événements dans l'application.
 
 ## Maquettes
 
 ### Wireframes
 
+Nous avons réalisé quelques wireframes pour visualiser l'interface de l'application. Nous n'avons pas fait de wireframes pour chaque page car la plupart des pages sont similaires.
+
 ![wireframes](/docs/img/wireframes.png)
 
-#### Page page
+#### Page home
 
-Pour les planificateurs : 
+Pour les planificateurs :
 
 - La home page contient la liste des événements à venir.
 
-Pour les agents : 
+Pour les agents :
 
 - La home page contient la liste des événements à venir où l'agent doit intervenir.
 
 #### Page profil
 
-Pour les planificateurs : 
+Pour les planificateurs :
 
 - La page profil contient les informations de la personne.
 
-Pour les agents : 
+Pour les agents :
 
 - La page profil contient les informations de la personne et la possibilité d'accéder à la page des disponibilités.
 
 #### Page calendrier
 
-Pour les planificateurs : 
+Pour les planificateurs :
 
 - La page calendrier contient tous les événements planifiés sur plusieurs mois.
 
-Pour les agents : 
+Pour les agents :
 
 - La page calendrier contient tous les événements auxquels l'agent intervient.
 
 #### Page disponibilités
 
-Pour les agents : 
+Pour les agents :
 
 - La page disponibilités permet aux agents de gérer leur disponibilités.
 
 ### Mockups
 
+Par manque de temps, nous n'avons pas pu réaliser de mockups pour l'application. Cependant, nous avons une idée précise de ce à quoi l'application devrait ressembler. Nous avons pris en compte les retours des planificateurs et des agents pour concevoir une interface simple et intuitive.
+
+D'autre part, nous avions prévu de réaliser l'application en utilisant des composants déjà existants, ce qui réduit le risque d'avoir une interface peu ergonomique et nous autorise à ne pas faire de mockups.
+
 ## Choix technologiques
+
+Nous avons choisi de développer l'application en utilisant le framework fullstack **Next.js**. Ce framework nous permet de créer une application web complète avec un backend et un frontend en utilisant le même langage (JavaScript). De plus, Next.js offre des fonctionnalités intéressantes telles que le rendu côté serveur, la génération de pages statiques et la gestion des routes. D'autre part, nous sommes familiers avec le langage JavaScript et le framework React, ce qui nous a évidemment orienté vers Next.js.
 
 ## Tests utilisateurs
 
