@@ -7,49 +7,59 @@ import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import Paper from "@mui/material/Paper";
 import EventMapWrapper from "@/components/EventMapWrapper";
-
+import EventActionsWrapper from "@/components/EventActionsWrapper";
 
 const secret = new TextEncoder().encode(process.env.SESSION_SECRET);
 
-
 async function geocodeCity(city: string) {
   const res = await fetch(`https://nominatim.openstreetmap.org/search?format=json&q=${encodeURIComponent(city)}`, {
-    headers: {
-      "User-Agent": "securityplanner-app"
-    }
+    headers: { "User-Agent": "securityplanner-app" },
   });
+
   const data = await res.json();
   if (!data || data.length === 0) return null;
+
   return {
     lat: parseFloat(data[0].lat),
     lon: parseFloat(data[0].lon),
   };
 }
 
-export default async function EventDetailsPage(props: { params: { id: string } }) {
-  const eventId = parseInt(props.params.id, 10);
+export default async function EventDetailsPage({ params }: { params: { id: string } }) {
+  const eventId = parseInt(params?.id ?? "", 10);
+  if (isNaN(eventId)) return notFound();
 
-  if (isNaN(eventId)) {
-    console.error("ID d'événement invalide :", props.params.id);
-    return notFound();
-  }
+  const cookieStore = await cookies();
+  const token = cookieStore.get("token")?.value;
 
-  const cookieStore = cookies();
-  const token = (await cookieStore).get("token")?.value;
+  if (!token) return notFound();
 
-  if (!token) {
-    console.log("Aucun token trouvé.");
-    return notFound();
-  }
-
-  let userId: string;
+  let userId: number;
+  let canAccessCriticalEvents = false;
 
   try {
     const { payload } = await jwtVerify(token, secret);
-    userId = payload.id as string;
-    console.log("Utilisateur vérifié :", userId);
+    const user = await prisma.user.findUnique({
+      where: { email: payload.email as string },
+    });
+
+    if (!user) return notFound();
+    userId = user.id;
+    canAccessCriticalEvents = user.canAccessCriticalEvents;
   } catch (err) {
     console.error("Erreur de vérification du token :", err);
+    return notFound();
+  }
+
+  const event = await prisma.event.findUnique({
+    where: { id: eventId },
+  });
+
+  if (!event) return notFound();
+
+  // Restriction basée sur la criticité
+  if (event.isCritical && !canAccessCriticalEvents) {
+    console.warn("Accès refusé : événement critique non autorisé.");
     return notFound();
   }
 
@@ -59,20 +69,6 @@ export default async function EventDetailsPage(props: { params: { id: string } }
       userId,
     },
   });
-
-  if (!schedule) {
-    console.warn("L'utilisateur n'est pas assigné à cet événement.");
-    return notFound();
-  }
-
-  const event = await prisma.event.findUnique({
-    where: { id: eventId },
-  });
-
-  if (!event) {
-    console.warn("⚠️ Aucun événement trouvé avec cet ID.");
-    return notFound();
-  }
 
   const createdAtDate = event.createdAt ? new Date(event.createdAt) : null;
   const geo = await geocodeCity(event.city);
@@ -103,11 +99,21 @@ export default async function EventDetailsPage(props: { params: { id: string } }
         </Typography>
       </Paper>
 
+      {/*
+        Afficher les actions dans tous les cas,
+        même si aucun schedule n'existe encore
+      */}
+      <EventActionsWrapper
+        eventId={event.id}
+        scheduleId={schedule?.id ?? null}
+        status={schedule?.status ?? null}
+        refusalReason={schedule?.refusalReason}
+      />
       {geo && (
-		<Box sx={{ mt: 4, height: 400 }}>
-			<EventMapWrapper lat={geo.lat} lon={geo.lon} label={event.name} />
-		</Box>
-		)}
+        <Box sx={{ mt: 4, height: 400 }}>
+          <EventMapWrapper lat={geo.lat} lon={geo.lon} label={event.name} />
+        </Box>
+      )}
     </Box>
   );
 }

@@ -14,12 +14,12 @@ import Divider from "@mui/material/Divider";
 import IconButton from "@mui/material/IconButton";
 import MenuIcon from "@mui/icons-material/Menu";
 import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
-import ListItemButton from "@mui/material/ListItemButton";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
 import HomeIcon from "@mui/icons-material/Home";
 import LogoutIcon from "@mui/icons-material/Logout";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
+import AssignmentIcon from "@mui/icons-material/Assignment";
 import NavLink from "@/components/NavLink";
 import 'leaflet/dist/leaflet.css';
 
@@ -128,28 +128,33 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
           </Toolbar>
           <Divider />
           <List component="nav">
-              <NavLink href="/dashboard/home">
-                <ListItemIcon><HomeIcon /></ListItemIcon>
-                <ListItemText primary="Home" />
-              </NavLink>
+            <NavLink href="/dashboard/home">
+              <ListItemIcon><HomeIcon /></ListItemIcon>
+              <ListItemText primary="Home" />
+            </NavLink>
 
-              <NavLink href="/dashboard/profile">
-                <ListItemIcon><AccountCircleIcon /></ListItemIcon>
-                <ListItemText primary="Mon profil" />
-              </NavLink>
+            <NavLink href="/dashboard/profile">
+              <ListItemIcon><AccountCircleIcon /></ListItemIcon>
+              <ListItemText primary="Mon profil" />
+            </NavLink>
 
-              <NavLink
-                href="#"
-                onClick={async (e) => {
-                  e.preventDefault();
-                  await fetch("/api/auth/logout", { method: "POST" });
-                  window.location.href = "/login";
-                }}
-              >
-                <ListItemIcon><LogoutIcon /></ListItemIcon>
-                <ListItemText primary="Logout" />
-              </NavLink>
-            </List>
+            <NavLink href="/dashboard/missions">
+              <ListItemIcon><AssignmentIcon /></ListItemIcon>
+              <ListItemText primary="Mes missions" />
+            </NavLink>
+
+            <NavLink
+              href="#"
+              onClick={async (e) => {
+                e.preventDefault();
+                await fetch("/api/auth/logout", { method: "POST" });
+                window.location.href = "/login";
+              }}
+            >
+              <ListItemIcon><LogoutIcon /></ListItemIcon>
+              <ListItemText primary="Logout" />
+            </NavLink>
+          </List>
         </Drawer>
         <Box
           component="main"

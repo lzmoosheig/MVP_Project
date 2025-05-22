@@ -33,9 +33,9 @@ model User {
   password    String
   roleId      Int
   role        Role        @relation(fields: [roleId], references: [id])
+  canAccessCriticalEvents Boolean @default(false)
   Schedules   Schedule[]
 }
-
 
 model Event {
   id             Int       @id @default(autoincrement())
@@ -50,6 +50,8 @@ model Event {
   instructions   String?
   requiredAgents Int?
   eventType      String?
+  duration       Int?
+  meetHour       DateTime?
   isCritical     Boolean   @default(false)
   createdAt      DateTime @default(now())
   updatedAt      DateTime? 
@@ -57,11 +59,19 @@ model Event {
 }
 
 model Schedule {
-  id        Int      @id @default(autoincrement())
-  startDate DateTime
-  endDate   DateTime
-  userId    Int
-  eventId   Int
-  user      User     @relation(fields: [userId], references: [id])
-  event     Event   @relation(fields: [eventId], references: [id])
+  id           Int       @id @default(autoincrement())
+  startDate    DateTime
+  endDate      DateTime
+  userId       Int
+  eventId      Int
+  status       ScheduleStatus @default(PENDING)
+  refusalReason String?
+  user         User     @relation(fields: [userId], references: [id])
+  event        Event    @relation(fields: [eventId], references: [id])
+}
+
+enum ScheduleStatus {
+  PENDING
+  ACCEPTED
+  REFUSED
 }
