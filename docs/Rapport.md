@@ -1,4 +1,4 @@
-# MVP - Projet Agent Sécurité
+# MVP - Projet de planification des agents de sécurité
 
 ## Introduction
 
