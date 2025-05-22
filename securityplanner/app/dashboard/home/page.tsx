@@ -19,7 +19,7 @@ export default async function Page() {
 
   let email = "";
   let role = "";
-  let userId = "";
+  let canAccessCriticalEvents = false;
 
   try {
     if (token) {
@@ -39,17 +39,12 @@ export default async function Page() {
     return <Typography>Utilisateur introuvable.</Typography>;
   }
 
-  userId = user.id;
+  canAccessCriticalEvents = user.canAccessCriticalEvents;
 
-  const schedules = await prisma.schedule.findMany({
+  const events = await prisma.event.findMany({
     where: {
-      userId,
-      endDate: {
-        gte: new Date(),
-      },
-    },
-    include: {
-      event: true,
+      startDate: { gte: new Date() },
+      ...(canAccessCriticalEvents ? {} : { isCritical: false }),
     },
     orderBy: {
       startDate: "asc",
@@ -63,11 +58,11 @@ export default async function Page() {
       </Typography>
 
       <Typography variant="h6" sx={{ mt: 4, mb: 2 }}>
-        Vos événements à venir
+        Événements disponibles
       </Typography>
 
-      {schedules.length === 0 ? (
-        <Typography>Aucun événement prévu.</Typography>
+      {events.length === 0 ? (
+        <Typography>Aucun événement disponible.</Typography>
       ) : (
         <Grid
           container
@@ -75,29 +70,32 @@ export default async function Page() {
           sx={{
             display: "grid",
             gridTemplateColumns: {
-              xs: "1fr", // mobile
-              sm: "1fr", // tablette portrait
-              md: "1fr 1fr", // tablette paysage et +
+              xs: "1fr",
+              sm: "1fr",
+              md: "1fr 1fr",
             },
           }}
         >
-          {schedules.map((schedule) => (
+          {events.map((event) => (
             <Card
-              key={schedule.id}
+              key={event.id}
               elevation={3}
               sx={{ m: 1 }}
               component={NavLink}
-              href={`/dashboard/event/${schedule.event.id}`}
+              href={`/dashboard/event/${event.id}`}
             >
               <CardActionArea>
                 <CardContent>
                   <Typography variant="h6" gutterBottom>
-                    {schedule.event.name}
+                    {event.name}
                   </Typography>
                   <Typography variant="body2" color="textSecondary">
-                    Du {format(schedule.startDate, "dd/MM/yyyy")} au{" "}
-                    {format(schedule.endDate, "dd/MM/yyyy")}
+                    Du {format(event.startDate, "dd/MM/yyyy")} au{" "}
+                    {format(event.endDate, "dd/MM/yyyy")}
                   </Typography>
+                  {event.isCritical && (
+                    <Typography color="error">⚠ Événement critique</Typography>
+                  )}
                 </CardContent>
               </CardActionArea>
             </Card>
