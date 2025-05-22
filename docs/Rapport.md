@@ -171,6 +171,24 @@ D'autre part, nous avions prévu de réaliser l'application en utilisant des com
 
 Nous avons choisi de développer l'application en utilisant le framework fullstack **Next.js**. Ce framework nous permet de créer une application web complète avec un backend et un frontend en utilisant le même langage (JavaScript). De plus, Next.js offre des fonctionnalités intéressantes telles que le rendu côté serveur, la génération de pages statiques et la gestion des routes. D'autre part, nous sommes familiers avec le langage JavaScript et le framework React, ce qui nous a évidemment orienté vers Next.js.
 
+Nous avons également choisi d'utiliser **Prisma** comme ORM pour interagir avec la base de données. Prisma est un ORM moderne et performant qui nous permet de gérer facilement les migrations de la base de données et d'effectuer des requêtes complexes.
+
+Nous avons opté pour une base de données **PostgreSQL** car elle est robuste et bien supportée par Prisma. De plus, PostgreSQL est une base de données relationnelle qui convient parfaitement à notre besoin de gérer des relations entre les agents, les événements et les disponibilités.
+
+Concernant l'authentification, nous avions initialement prévu d'utiliser **NextAuth** pour gérer l'authentification des utilisateurs. Cependant, nous avons finalement décidé de ne pas implémenter cette fonctionnalité dans le MVP, car cela aurait nécessité un temps de développement supplémentaire. Nous avons donc opté pour une solution simple où les utilisateurs peuvent se connecter avec un nom d'utilisateur et un mot de passe ce qui, à l'aide de la librairie **Jose**, génère un token JWT stocké dans un cookie. Nous utilisons également **bcrypt** pour le hachage des mots de passe.
+
+Pour le frontend, nous utilisons des composants React préfabriqués par la librairie **Material UI**. Cette librairie nous permet de créer une interface utilisateur moderne et responsive sans avoir à développer tous les composants nous-mêmes. De plus, Material UI est bien documentée et facile à utiliser.
+
+### Résumé
+
+Pour résumer, voici les choix technologiques que nous avons faits :
+
+- **Framework** : Next.js
+- **ORM** : Prisma
+- **Base de données** : PostgreSQL
+- **Authentification** : JWT avec bcrypt
+- **Librairie UI** : Material UI
+
 ## Tests utilisateurs
 
 ## Pérennité du projet
