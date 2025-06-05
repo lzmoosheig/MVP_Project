@@ -43,8 +43,6 @@
 
 13. [Conclusion](#13-conclusion)  
 
----
-
 ## 1. Introduction
 
 ### 1.1. Problématique
