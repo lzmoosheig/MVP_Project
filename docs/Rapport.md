@@ -1,35 +1,80 @@
 # MVP - Projet de planification des agents de sécurité
 
-## Introduction
+## Table des Matières
 
-### Problématique
+1. [Introduction](#1-introduction)  
+1.1 [Problématique](#11-problématique)  
+1.2 [Objectifs du projet](#12-objectifs-du-projet)  
+
+2. [Membres de l'équipe](#2-membres-de-léquipe)  
+2.1 [Léo Zmoos](#21-léo-zmoos)  
+2.2 [Dylan Oliveira Ramos](#22-dylan-oliveira-ramos)  
+
+3. [Présentation de l'idée](#3-présentation-de-lidée)  
+
+4. [Secteur de marché](#4-secteur-de-marché)  
+
+5. [Public cible](#5-public-cible)  
+5.1 [Personae](#51-personae)  
+
+6. [Questionnaires et hypothèses](#6-questionnaires-et-hypothèses-à-valider-avec-le-public-cible)  
+6.1 [Planificateur](#61-planificateur)  
+6.2 [Agent](#62-agent)  
+
+7. [Analyse des retours](#7-analyse-des-retours-du-public-cible)  
+7.1 [Retours des planificateurs](#71-retours-des-planificateurs)  
+7.2 [Retours des agents](#72-retours-des-agents)  
+
+8. [Maquettes](#8-maquettes)  
+8.1 [Wireframes](#81-wireframes)   
+8.2 [Mockups](#82-mockups)  
+
+9. [Choix technologiques](#9-choix-technologiques)  
+9.1 [Résumé](#91-résumé)  
+
+10. [Tests utilisateurs](#10-tests-utilisateurs)  
+10.1 [Changement majeur](#101-changement-majeur)  
+
+11. [Pérennité du projet](#11-pérennité-du-projet)  
+
+12. [Difficultés rencontrées](#12-difficultés-rencontrées-et-solutions)  
+12.1 [Prise en main de Next.js](#121-prise-en-main-de-nextjs)  
+12.2 [Authentification](#122-tentative-dimplémentation-de-lauthentification)  
+
+13. [Conclusion](#13-conclusion)  
+
+---
+
+## 1. Introduction
+
+### 1.1. Problématique
 
 Une société de sécurité a un planificateur responsable d'attribuer des plages horaires à des agents. Le problème est que le planificateur reçoit les plages horaires de tous les agents par message sur WhatsApp. Cela lui fait perdre un temps considérable car il doit manuellement gérer les disponibilités et contraintes des agents, notamment en utilisant un fichier Excel.
 
 En une phrase, la problèmatique est la **complexité dans la planification horaire des agents de sécurité**.
 
-### Objectifs du projet
+### 1.2. Objectifs du projet
 
 L'objectif principal du projet est de réduire l'effort du planificateur et lui faire gagner du temps tout en minimisant le risque d'erreur humaine. Pour cela, une application permettrait de centraliser les données des agents et ainsi simplifier le travail du planificateur. D'autre part, l'application permettrait aux agents de gérer leurs disponibilités de manière autonome et de les transmettre au planificateur.
 
-## Membres de l'équipe
+## 2. Membres de l'équipe
 
-### Léo Zmoos
+### 2.1. Léo Zmoos
 
 - leo.zmoos@heig-vd.ch
 - Spécialisé dans le développement backend
 
-### Dylan Oliveira Ramos
+### 2.2. Dylan Oliveira Ramos
 
 - dylan.oliveiraramos@heig-vd.ch
 - Spécialisé dans le développement frontend
 
-## Présentation de l'idée
+## 3. Présentation de l'idée
 
 Notre idée est de créer une application web qui permettrait aux agents de sécurité de gérer leurs disponibilités et de les transmettre au planificateur. Le planificateur pourrait ainsi visualiser les disponibilités des agents et attribuer les plages horaires en toute simplicité. L'application serait accessible via un navigateur web et serait responsive pour s'adapter à tous les appareils (mobile, tablette, desktop).
 L'application serait divisée en deux parties : une partie pour le planificateur et une partie pour les agents. Le planificateur aurait accès à un calendrier avec les disponibilités des agents, tandis que les agents pourraient gérer leurs disponibilités et consulter leur planning.
 
-## Secteur de marché
+## 4. Secteur de marché
 
 Le secteur de marché de cette application se situerait principalement dans **la gestion des ressources humaines et la planification du personnel**, avec un focus particulier sur les **services de sécurité privée**. Voici les principaux segments concernés :
 
@@ -39,7 +84,7 @@ Le secteur de marché de cette application se situerait principalement dans **la
 4. **Événementiel** : entreprises gérant la sécurité pour des événements temporaires.
 5. **Secteur public** : municipalités et administrations ayant des services de sécurité internes.
 
-## Public cible
+## 5. Public cible
 
 Le public cible de cette application est constitué principalement de deux groupes : les planificateurs et les agents de sécurité.
 
@@ -47,7 +92,7 @@ Le public cible de cette application est constitué principalement de deux group
 
 2. **Agents de sécurité** : professionnels chargés de la surveillance et de la sécurité sur le terrain. Ils doivent gérer leurs disponibilités et communiquer avec le planificateur pour s'assurer qu'ils sont affectés aux bons événements.
 
-### Personae
+### 5.1. Personae
 
 #### Planificateur
 
@@ -67,11 +112,11 @@ Le public cible de cette application est constitué principalement de deux group
 - **Besoins** : Pierre a besoin d'une solution qui lui permette de gérer facilement ses disponibilités, de consulter son planning et de communiquer avec le planificateur.
 - **Objectifs** : Pierre souhaite avoir un moyen simple de gérer ses disponibilités, de consulter son planning et de recevoir des notifications concernant les événements à venir.
 
-## Questionnaires et hypothèses à valider avec le public cible
+## 6. Questionnaires et hypothèses à valider avec le public cible
 
 Nous avons réfléchi à plusieurs questions en essayant d'être le plus exhaustif possible. Lors de nos interviews, nous avons commencé par poser des questions ouvertes pour comprendre le fonctionnement actuel de la planification et les besoins des agents. Ensuite, nous avons posé des questions plus spécifiques sur les fonctionnalités souhaitées dans l'application. Le tout en évitant de poser des questions orientées pour ne pas influencer les réponses.
 
-### Planificateur
+### 6.1. Planificateur
 
 > Quelle est votre méthode de travail actuelle? (workflow)
 
@@ -89,7 +134,7 @@ Nous avons réfléchi à plusieurs questions en essayant d'être le plus exhaust
 
 > Si vous aviez une application pour la planification, à quoi celle-ci ressemblerait?
 
-### Agent
+### 6.2. Agent
 
 > Expliquez-nous votre travail d'agent, qu'est-ce que vous faites?
 
@@ -103,23 +148,23 @@ Nous avons réfléchi à plusieurs questions en essayant d'être le plus exhaust
 
 > Si vous aviez une application pour la planification, à quoi celle-ci ressemblerait?
 
-## Analyse des retours du public cible
+## 7. Analyse des retours du public cible
 
-### Retours des planificateurs
+### 7.1. Retours des planificateurs
 
 De manière générale, les planificateurs ont exprimé le besoin d'une solution centralisée pour gérer les disponibilités des agents. Ils ont souligné la complexité de la planification actuelle, notamment en raison de la communication par message. Ils souhaitent une application qui leur permette de visualiser facilement les disponibilités des agents et d'attribuer les plages horaires sans effort.
 
 Nous avons également interviewé des planificateurs ayant déjà une application dédiée à la gestion des plannings. Dans l'ensemble, ils trouvent que leur application fonctionne très bien, mais qu'elle pourrait être améliorée en termes d'ergonomie et de fonctionnalités.
 
-### Retours des agents
+### 7.2. Retours des agents
 
 La majorité des agents ont dit être satisfaits de la manière dont ils transmettent leurs disponibilités au planificateur. En effet, ceux-ci n'ont pas de difficulté à communiquer avec le planificateur par message ou via l'application déjà existante. Nous en avons conclu que le problème ne se situe pas au niveau de la communication entre le planificateur et les agents, mais plutôt au niveau de la gestion des disponibilités par le planificateur.
 
 Certains agents nous ont fait part de leur ressenti concernant les planificateurs. Selon eux, le problème n'est pas la gestion des disponibilités des agents, mais plutôt le nombre d'événements à planifier. Cela nous a amené à réfléchir à la possibilité d'intégrer une fonctionnalité de gestion des événements dans l'application.
 
-## Maquettes
+## 8. Maquettes
 
-### Wireframes
+### 8.1. Wireframes
 
 Nous avons réalisé quelques wireframes pour visualiser l'interface de l'application. Nous n'avons pas fait de wireframes pour chaque page car la plupart des pages sont similaires.
 
@@ -161,13 +206,13 @@ Pour les agents :
 
 - La page disponibilités permet aux agents de gérer leur disponibilités.
 
-### Mockups
+### 8.2. Mockups
 
 Par manque de temps, nous n'avons pas pu réaliser de mockups pour l'application. Cependant, nous avons une idée précise de ce à quoi l'application devrait ressembler. Nous avons pris en compte les retours des planificateurs et des agents pour concevoir une interface simple et intuitive.
 
 D'autre part, nous avions prévu de réaliser l'application en utilisant des composants déjà existants, ce qui réduit le risque d'avoir une interface peu ergonomique et nous autorise à ne pas faire de mockups.
 
-## Choix technologiques
+## 9. Choix technologiques
 
 Nous avons choisi de développer l'application en utilisant le framework fullstack **Next.js**. Ce framework nous permet de créer une application web complète avec un backend et un frontend en utilisant le même langage (JavaScript). De plus, Next.js offre des fonctionnalités intéressantes telles que le rendu côté serveur, la génération de pages statiques et la gestion des routes. D'autre part, nous sommes familiers avec le langage JavaScript et le framework React, ce qui nous a évidemment orienté vers Next.js.
 
@@ -179,7 +224,7 @@ Concernant l'authentification, nous avions initialement prévu d'utiliser **Next
 
 Pour le frontend, nous utilisons des composants React préfabriqués par la librairie **Material UI**. Cette librairie nous permet de créer une interface utilisateur moderne et responsive sans avoir à développer tous les composants nous-mêmes. De plus, Material UI est bien documentée et facile à utiliser.
 
-### Résumé
+### 9.1. Résumé
 
 Pour résumer, voici les choix technologiques que nous avons faits :
 
@@ -189,17 +234,17 @@ Pour résumer, voici les choix technologiques que nous avons faits :
 - **Authentification** : JWT avec bcrypt
 - **Librairie UI** : Material UI
 
-## Tests utilisateurs
+## 10. Tests utilisateurs
 
 Lors de la phase de tests utilisateurs, notre application n'était pas tout à fait terminée. Cependant, nous avons pu réaliser quelques tests avec des utilisateurs potentiels pour recueillir leurs retours sur l'ergonomie et les fonctionnalités de l'application. Les retours ont été globalement positifs, notamment concernant l'interface, mais nous nous sommes rendus compte d'un changement majeur qui pourrait être apporté à l'application.
 
-### Changement majeur
+### 10.1. Changement majeur
 
 Au lieu de demander aux agents de transmettre leurs disponibilités, pourquoi ne pas leur demander de s'inscrire directement aux événements?
 
 C'est la direction que nous avons décidé de prendre. En effet, cela évite au planificateur de devoir gérer les disponibilités des agents et permet aux agents de s'organiser sans avoir à attendre l'approbation du planificateur. Cette manière de faire simplifie grandement la gestion des plannings et permet au planificateur de gagner un temps considérable.
 
-## Pérennité du projet
+## 11. Pérennité du projet
 
 Pour assurer la pérennité du projet, nous avons pris en compte plusieurs aspects :
 
@@ -215,21 +260,21 @@ Cependant, il reste encore des points à améliorer pour assurer la pérennité 
 
 - **Aspects financiers** : Nous n'avons pas encore réfléchi à un modèle économique pour monétiser l'application. Une solution pourrait être de proposer un abonnement mensuel pour les entreprises souhaitant utiliser l'application. Mais cela reste un point à approfondir pour assurer la viabilité financière du projet.
 
-## Difficultés rencontrées et solutions
+## 12. Difficultés rencontrées et solutions
 
-### Prise en main de Next.js
+### 12.1. Prise en main de Next.js
 
 Nous voulions utiliser un framework fullstack populaire et moderne pour le développement de l'application. Next.js s'est imposé comme un choix évident, mais la prise en main a été un peu difficile au début. En effet, contrairement à d'autres frameworks, Next.js laisse une grande liberté de choix dans les librairies à utiliser notamment pour l'ORM, l'authentification, etc. Cela a rendu la phase de démarrage un peu plus longue que prévu.
 
 Heureusement, Next.js étant très populaire, nous avons pu trouver de nombreux tutoriels et ressources en ligne pour nous aider à nous familiariser avec le framework. De plus, la documentation officielle est très complète et bien structurée, ce qui nous a permis de progresser rapidement.
 
-### Tentative d'implémentation de l'authentification
+### 12.2. Tentative d'implémentation de l'authentification
 
 Nous avions initialement prévu d'utiliser NextAuth pour gérer l'authentification des utilisateurs. Cependant, nous avons rencontré quelques difficultés lors de la configuration de NextAuth avec Prisma et PostgreSQL. De plus, nous avons réalisé que l'implémentation de l'authentification aurait nécessité un temps de développement supplémentaire que nous n'avions pas.
 
 Nous avons donc décidé de ne pas implémenter cette fonctionnalité dans le MVP et de simplement utiliser un système d'authentification basique avec des tokens JWT stockés dans des cookies.
 
-## Conclusion
+## 13. Conclusion
 
 Ce projet nous a permis de découvrir les étapes de lancement d'un MVP, de l'identification d'un problème concret au développement et aux tests utilisateurs. Nous avons appris l'importance de valider les hypothèses auprès des parties prenantes et de prioriser les fonctionnalités essentielles pour répondre aux besoins réels.
 
