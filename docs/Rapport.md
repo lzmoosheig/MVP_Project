@@ -256,7 +256,7 @@ Cependant, il reste encore des points à améliorer pour assurer la pérennité 
 
 - **Pipelines CI/CD** : Nous n'avons pas encore mis en place de pipelines d'intégration et de déploiement continu pour automatiser les tests et le déploiement de l'application. Cela reste un point à améliorer pour faciliter la gestion du projet à long terme.
 
-- **Aspects financiers** : Nous n'avons pas encore réfléchi à un modèle économique pour monétiser l'application. Une solution pourrait être de proposer un abonnement mensuel pour les entreprises souhaitant utiliser l'application. Mais cela reste un point à approfondir pour assurer la viabilité financière du projet.
+- **Aspects financiers** : Nous n'avons pas encore réfléchi à un modèle économique pour monétiser l'application. Une solution pourrait être de proposer un abonnement mensuel/annuel pour les entreprises souhaitant utiliser l'application. Mais cela reste un point à approfondir pour assurer la viabilité financière du projet.
 
 ## 12. Difficultés rencontrées et solutions
 
