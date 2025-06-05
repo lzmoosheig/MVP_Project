@@ -195,7 +195,7 @@ Lors de la phase de tests utilisateurs, notre application n'était pas tout à f
 
 ### Changement majeur
 
-Au lieu de demander aux agents de transmettre leurs disponibilités, pourquoi ne pas leur demander de s'inscrire directement aux événements? 
+Au lieu de demander aux agents de transmettre leurs disponibilités, pourquoi ne pas leur demander de s'inscrire directement aux événements?
 
 C'est la direction que nous avons décidé de prendre. En effet, cela évite au planificateur de devoir gérer les disponibilités des agents et permet aux agents de s'organiser sans avoir à attendre l'approbation du planificateur. Cette manière de faire simplifie grandement la gestion des plannings et permet au planificateur de gagner un temps considérable.
 
@@ -203,4 +203,22 @@ C'est la direction que nous avons décidé de prendre. En effet, cela évite au 
 
 ## Difficultés rencontrées et solutions
 
+### Prise en main de Next.js
+
+Nous voulions utiliser un framework fullstack populaire et moderne pour le développement de l'application. Next.js s'est imposé comme un choix évident, mais la prise en main a été un peu difficile au début. En effet, contrairement à d'autres frameworks, Next.js laisse une grande liberté de choix dans les librairies à utiliser notamment pour l'ORM, l'authentification, etc. Cela a rendu la phase de démarrage un peu plus longue que prévu.
+
+Heureusement, Next.js étant très populaire, nous avons pu trouver de nombreux tutoriels et ressources en ligne pour nous aider à nous familiariser avec le framework. De plus, la documentation officielle est très complète et bien structurée, ce qui nous a permis de progresser rapidement.
+
+### Tentative d'implémentation de l'authentification
+
+Nous avions initialement prévu d'utiliser NextAuth pour gérer l'authentification des utilisateurs. Cependant, nous avons rencontré quelques difficultés lors de la configuration de NextAuth avec Prisma et PostgreSQL. De plus, nous avons réalisé que l'implémentation de l'authentification aurait nécessité un temps de développement supplémentaire que nous n'avions pas.
+
+Nous avons donc décidé de ne pas implémenter cette fonctionnalité dans le MVP et de simplement utiliser un système d'authentification basique avec des tokens JWT stockés dans des cookies.
+
 ## Conclusion
+
+Ce projet nous a permis de découvrir les étapes de lancement d'un MVP, de l'identification d'un problème concret au développement et aux tests utilisateurs. Nous avons appris l'importance de valider les hypothèses auprès des parties prenantes et de prioriser les fonctionnalités essentielles pour répondre aux besoins réels.
+
+Grâce à ce processus, nous avons pu concevoir une solution qui n'est certes, pas terminée mais qui pourrait simplifier significativement la gestion des plannings pour les entreprises de sécurité, tout en offrant une expérience intuitive aux agents et aux planificateurs. Les retours des utilisateurs ont confirmé la pertinence de notre approche, notamment avec le pivot vers un système d'inscription directe aux événements, qui réduit la charge administrative.
+
+L'aventure nous a également renforcés dans nos compétences techniques et notre capacité à travailler en équipe sur un projet concret. Enfin, elle a souligné l'importance de rester agile et à l'écoute des utilisateurs pour bâtir une solution pérenne et évolutive.
