@@ -256,7 +256,7 @@ Je cite: "C’est pas tant les agents le problème, c’est qu’il y a trop d�
 
 Nous avons réalisé quelques wireframes pour visualiser l'interface de l'application. Nous n'avons pas fait de wireframes pour chaque page car la plupart des pages sont similaires.
 
-![wireframes](/docs/img/wireframes.png)
+![wireframes](./img/wireframes.png)
 
 #### 8.1.1. Page home
 
