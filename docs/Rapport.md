@@ -230,13 +230,23 @@ Nous avons réfléchi à plusieurs questions en essayant d'être le plus exhaust
 
 De manière générale, les planificateurs ont exprimé le besoin d'une solution centralisée pour gérer les disponibilités des agents. Ils ont souligné la complexité de la planification actuelle, notamment en raison de la communication par message. Ils souhaitent une application qui leur permette de visualiser facilement les disponibilités des agents et d'attribuer les plages horaires sans effort.
 
+Je cite: “On passe notre temps à courir après les disponibilités des agents par messages. Un outil unique pour tout centraliser nous ferait gagner un temps fou.” — Responsable planning, entreprise de sécurité à Marly
+
 Nous avons également interviewé des planificateurs ayant déjà une application dédiée à la gestion des plannings. Dans l'ensemble, ils trouvent que leur application fonctionne très bien, mais qu'elle pourrait être améliorée en termes d'ergonomie et de fonctionnalités.
+
+Je cite: “L’outil qu’on utilise est plutôt complet, mais l’interface est vieillissante et pas adaptée à tous les types de missions. On aimerait pouvoir mieux gérer les exceptions et les urgences.”
+
+“Je trouve que certaines applis oublient qu’on travaille souvent sur le terrain avec un téléphone. Si c’est trop lent ou confus, je reviens vite au papier.”
+
 
 ### 7.2. Retours des agents
 
 La majorité des agents ont dit être satisfaits de la manière dont ils transmettent leurs disponibilités au planificateur. En effet, ceux-ci n'ont pas de difficulté à communiquer avec le planificateur par message ou via l'application déjà existante. Nous en avons conclu que le problème ne se situe pas au niveau de la communication entre le planificateur et les agents, mais plutôt au niveau de la gestion des disponibilités par le planificateur.
 
 Certains agents nous ont fait part de leur ressenti concernant les planificateurs. Selon eux, le problème n'est pas la gestion des disponibilités des agents, mais plutôt le nombre d'événements à planifier. Cela nous a amené à réfléchir à la possibilité d'intégrer une fonctionnalité de gestion des événements dans l'application.
+
+Je cite: "C’est pas tant les agents le problème, c’est qu’il y a trop d’événements, et ils doivent tous être calés en même temps."
+— Leonard K., agent de sécurité événementiel
 
 ## 8. Maquettes
 
