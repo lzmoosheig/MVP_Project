@@ -59,13 +59,26 @@ L'objectif principal du projet est de réduire l'effort du planificateur et lui 
 
 ### 2.1. Léo Zmoos
 
-- leo.zmoos@heig-vd.ch
-- Spécialisé dans le développement backend
+- **Mail**: leo.zmoos@heig-vd.ch
+- **Rôle** : Responsable du backend, de la sécurité et de l’architecture de la base de données.
+- **Compétences principales**:
+    - Développement backend en TypeScript avec Next.js App Router
+    - Sécurité des API (authentification avec JWT, gestion des rôles)
+    - Modélisation de base de données relationnelle avec Prisma + PostgreSQL
+    - Intégration d’API (Leaflet / OpenStreetMap)
+    - Mise en place de la logique de validation/refus des missions par les agents
+    - Tests et debug serveur
 
 ### 2.2. Dylan Oliveira Ramos
 
-- dylan.oliveiraramos@heig-vd.ch
-- Spécialisé dans le développement frontend
+- **Mail**: dylan.oliveiraramos@heig-vd.ch
+- **Rôle** : Responsable de l’interface utilisateur (frontend) et de l’expérience utilisateur (UX).
+- **Compétences principales** :
+    -  Développement frontend en React avec MUI (Material UI)
+	-  Création d’interfaces responsives et accessibles
+	-  Intégration des composants interactifs (boutons, dialogues, cartes)
+	-  Gestion du routing côté client (navigation, rafraîchissement via router)
+	-  Déploiement et mise en page UI/UX intuitive
 
 ## 3. Présentation de l'idée
 
@@ -92,29 +105,81 @@ Le public cible de cette application est constitué principalement de deux group
 
 ### 5.1. Personae
 
-#### Planificateur
+#### 5.1.1 Jean Dupont — Le Planificateur
+**Âge**: 35 ans
 
-- **Nom** : Jean Dupont
-- **Âge** : 35 ans
-- **Poste** : Responsable de la planification des agents de sécurité
-- **Contexte** : Jean travaille pour une entreprise de sécurité privée et est responsable de la gestion des plannings des agents. Il utilise actuellement un fichier Excel pour gérer les disponibilités, mais il trouve cela compliqué et chronophage.
-- **Besoins** : Jean a besoin d'une solution qui lui permette de centraliser les disponibilités des agents, de simplifier la communication avec eux et de réduire le risque d'erreur humaine dans la planification.
-- **Objectifs** : Jean souhaite gagner du temps dans la gestion des plannings, réduire le stress lié à la planification et améliorer la satisfaction des agents.
+**Poste** : Responsable de la planification des agents
 
-#### Agent de sécurité
+**Niveau numérique**: Moyen (à l’aise avec Excel, mais pas expert logiciel)
 
-- **Nom** : Pierre Martin
-- **Âge** : 28 ans
-- **Poste** : Agent de sécurité
-- **Contexte** : Pierre travaille pour une entreprise de sécurité privée et est souvent affecté à des événements variés. Il doit gérer ses disponibilités et communiquer avec le planificateur pour s'assurer qu'il est affecté aux bons événements.
-- **Besoins** : Pierre a besoin d'une solution qui lui permette de gérer facilement ses disponibilités, de consulter son planning et de communiquer avec le planificateur.
-- **Objectifs** : Pierre souhaite avoir un moyen simple de gérer ses disponibilités, de consulter son planning et de recevoir des notifications concernant les événements à venir.
+**Contexte professionnel**: Jean travaille dans une société privée de sécurité, où il gère chaque semaine les plannings de plus de 40 agents pour une multitude d’événements (festivals, foires, événements sportifs). Il utilise actuellement un tableur Excel combiné à des appels téléphoniques et des SMS/Whatsapp pour coordonner les affectations.
+
+**Frustrations actuelles**:
+- Trop de temps perdu à reporter manuellement les données
+- Informations contradictoires ou manquantes à cause de canaux multiples (mail, WhatsApp, appels)
+- Difficile de suivre les confirmations/réponses des agents
+- Gestion de dernière minute stressante
+    
+    
+**Besoins fonctionnels**:
+- Interface centralisée pour créer un événement, visualiser les missions, et suivre les affectations
+- Visualisation rapide des agents confirmés / manquants
+- Pouvoir assigner automatiquement des agents selon leur disponibilité ou accréditation
+- Recevoir des notifications quand un agent refuse une mission ou ne répond pas
+
+**Objectifs personnels**:
+- Réduire au maximum le temps de planification hebdomadaire
+- Améliorer la fiabilité des plannings
+- Avoir une meilleure traçabilité pour justifier les affectations ou les absences
+
+**Scénario d’usage type**:
+Jean crée un nouvel événement dans l’interface, sélectionne les horaires et le nombre d’agents requis. Le système envoie automatiquement des invitations aux agents disponibles. Il suit en temps réel qui accepte ou refuse, et peut réassigner si besoin en quelques clics.
+
+#### 5.1.2 Pierre Martin — L’Agent de Sécurité
+**Âge** : 28 ans
+
+**Poste** : Agent de sécurité événementiel
+
+**Niveau numérique** : Bon (utilisation régulière du smartphone, familiarisé avec les apps professionnelles)
+
+**Contexte professionnel**:Pierre travaille en horaires décalés, parfois pour plusieurs entreprises. Il reçoit ses missions par SMS ou appel, parfois trop tard ou de manière désorganisée. Il note tout dans un agenda papier ou une app perso.
+
+**Frustrations actuelles**:
+- Ne sait pas toujours s’il est affecté ou non (principe que l'agent est toujours disponible si il ne spécifie pas le contraire)
+- Reçoit des informations parfois en doublon ou contradictoires
+- Ne peut pas facilement refuser ou justifier une indisponibilité
+- Ne reçoit pas les instructions de mission à temps principalement en cas de remplacement
+
+**Besoins fonctionnels**:
+- Voir toutes les missions proposées en un seul endroit
+- Accepter/refuser une mission directement depuis l’application
+- Ajouter une raison en cas de refus
+- Voir les instructions d’un événement et l’adresse exacte sur une carte
+
+**Objectifs personnels**:
+- Gérer son emploi du temps de manière proactive
+- Avoir plus de clarté sur ses missions
+- Réduire les oublis ou les erreurs
+- Éviter les appels inutiles avec les planificateurs
+
+**Scénario d’usage type**:
+Pierre reçoit une notification pour une nouvelle mission. Il clique sur l’événement, lit les détails, accepte la mission en un clic. S’il refuse, il indique la raison. Son planning est mis à jour automatiquement.
+
 
 ## 6. Questionnaires et hypothèses à valider avec le public cible
 
 Nous avons réfléchi à plusieurs questions en essayant d'être le plus exhaustif possible. Lors de nos interviews, nous avons commencé par poser des questions ouvertes pour comprendre le fonctionnement actuel de la planification et les besoins des agents. Ensuite, nous avons posé des questions plus spécifiques sur les fonctionnalités souhaitées dans l'application. Le tout en évitant de poser des questions orientées pour ne pas influencer les réponses.
 
-### 6.1. Planificateur
+## 6.1. Objectifs des entretiens
+| Objectif principal | Détail | 
+| -------- | -------- | 
+| Identifier les limitations des systèmes de planification actuels | Excel, appels, messagerie, etc.|
+| Comprendre les besoins spécifiques de chaque rôle| Informations utiles, actions critiques, communication|
+| Recueillir les attentes fonctionnelles pour un outil numérique | Visualisation du planning, interaction, notifications |
+| Valider l’intérêt et la disposition à utiliser un outil numérique| Acceptabilité, valeur perçue, préférences UI/UX|
+| Vérifier les freins potentiels à l’adoption| Complexité, login, confidentialité|
+
+### 6.2. Planificateur
 
 > Quelle est votre méthode de travail actuelle? (workflow)
 
@@ -132,7 +197,7 @@ Nous avons réfléchi à plusieurs questions en essayant d'être le plus exhaust
 
 > Si vous aviez une application pour la planification, à quoi celle-ci ressemblerait?
 
-### 6.2. Agent
+### 6.3. Agent
 
 > Expliquez-nous votre travail d'agent, qu'est-ce que vous faites?
 
@@ -145,6 +210,19 @@ Nous avons réfléchi à plusieurs questions en essayant d'être le plus exhaust
 > Cela vous dérange-t'il de devoir créer un compte?
 
 > Si vous aviez une application pour la planification, à quoi celle-ci ressemblerait?
+
+### 6.4. Hypothèses à valider
+
+
+| ID | Hypothèse | Cible | Statut (après entretiens) |
+| -------- | -------- | -------- | -------- |
+| H1     | Les planificateurs perdent un temps important à gérer les plannings manuellement| Planificateur| Confirmé |
+| H2     | Les agents souhaitent un accès mobile à leur planning personnel | Agent | Confirmé |
+| H3     | La majorité des refus sont communiqués par téléphone, ce qui complexifie le suivi | Planificateur | Confirmé |
+| H4     | Les agents accepteraient de créer un compte si cela facilite la gestion de leurs missions | Agent | Confirmé|
+| H5     | Une fonctionnalité de carte pour localiser l’événement est perçue comme utile | Agent | Confirmé |
+| H6     | Le planificateur souhaite être notifié en cas de refus ou d’absence d’agent | Planificateur     | Confirmé |
+
 
 ## 7. Analyse des retours du public cible
 
