@@ -3,43 +3,45 @@
 ## Table des Matières
 
 1. [Introduction](#1-introduction)  
-1.1 [Problématique](#11-problématique)  
-1.2 [Objectifs du projet](#12-objectifs-du-projet)  
+1.1. [Problématique](#11-problématique)  
+1.2. [Objectifs du projet](#12-objectifs-du-projet)  
 
 2. [Membres de l'équipe](#2-membres-de-léquipe)  
-2.1 [Léo Zmoos](#21-léo-zmoos)  
-2.2 [Dylan Oliveira Ramos](#22-dylan-oliveira-ramos)  
+2.1. [Léo Zmoos](#21-léo-zmoos)  
+2.2. [Dylan Oliveira Ramos](#22-dylan-oliveira-ramos)  
 
 3. [Présentation de l'idée](#3-présentation-de-lidée)  
 
 4. [Secteur de marché](#4-secteur-de-marché)  
 
 5. [Public cible](#5-public-cible)  
-5.1 [Personae](#51-personae)  
+5.1. [Personae](#51-personae)  
 
-6. [Questionnaires et hypothèses](#6-questionnaires-et-hypothèses-à-valider-avec-le-public-cible)  
-6.1 [Planificateur](#61-planificateur)  
-6.2 [Agent](#62-agent)  
+6. [Questionnaires et hypothèses à valider avec le public cible](#6-questionnaires-et-hypothèses-à-valider-avec-le-public-cible)  
+6.1. [Objectifs des entretiens](#61-objectifs-des-entretiens)  
+6.2. [Questions pour les planificateurs](#62-questions-pour-les-planificateurs)  
+6.3. [Questions pour les agents](#63-questions-pour-les-agents)  
+6.4. [Hypothèses à valider](#64-hypothèses-à-valider)
 
-7. [Analyse des retours](#7-analyse-des-retours-du-public-cible)  
-7.1 [Retours des planificateurs](#71-retours-des-planificateurs)  
-7.2 [Retours des agents](#72-retours-des-agents)  
+7. [Analyse des retours du public cible](#7-analyse-des-retours-du-public-cible)  
+7.1. [Retours des planificateurs](#71-retours-des-planificateurs)  
+7.2. [Retours des agents](#72-retours-des-agents)  
 
 8. [Maquettes](#8-maquettes)  
-8.1 [Wireframes](#81-wireframes)   
-8.2 [Mockups](#82-mockups)  
+8.1. [Wireframes](#81-wireframes)   
+8.2. [Mockups](#82-mockups)  
 
 9. [Choix technologiques](#9-choix-technologiques)  
-9.1 [Résumé](#91-résumé)  
+9.1. [Résumé](#91-résumé)  
 
 10. [Tests utilisateurs](#10-tests-utilisateurs)  
-10.1 [Changement majeur](#101-changement-majeur)  
+10.1. [Changement majeur](#101-changement-majeur)  
 
 11. [Pérennité du projet](#11-pérennité-du-projet)  
 
-12. [Difficultés rencontrées](#12-difficultés-rencontrées-et-solutions)  
-12.1 [Prise en main de Next.js](#121-prise-en-main-de-nextjs)  
-12.2 [Authentification](#122-tentative-dimplémentation-de-lauthentification)  
+12. [Difficultés rencontrées et solutions](#12-difficultés-rencontrées-et-solutions)  
+12.1. [Prise en main de Next.js](#121-prise-en-main-de-nextjs)  
+12.2. [Authentification](#122-tentative-dimplémentation-de-lauthentification)  
 
 13. [Conclusion](#13-conclusion)  
 
@@ -105,7 +107,7 @@ Le public cible de cette application est constitué principalement de deux group
 
 ### 5.1. Personae
 
-#### 5.1.1 Jean Dupont — Le Planificateur
+#### 5.1.1. Jean Dupont — Le Planificateur
 **Âge**: 35 ans
 
 **Poste** : Responsable de la planification des agents
@@ -135,7 +137,7 @@ Le public cible de cette application est constitué principalement de deux group
 **Scénario d’usage type**:
 Jean crée un nouvel événement dans l’interface, sélectionne les horaires et le nombre d’agents requis. Le système envoie automatiquement des invitations aux agents disponibles. Il suit en temps réel qui accepte ou refuse, et peut réassigner si besoin en quelques clics.
 
-#### 5.1.2 Pierre Martin — L’Agent de Sécurité
+#### 5.1.2. Pierre Martin — L’Agent de Sécurité
 **Âge** : 28 ans
 
 **Poste** : Agent de sécurité événementiel
@@ -170,7 +172,7 @@ Pierre reçoit une notification pour une nouvelle mission. Il clique sur l’év
 
 Nous avons réfléchi à plusieurs questions en essayant d'être le plus exhaustif possible. Lors de nos interviews, nous avons commencé par poser des questions ouvertes pour comprendre le fonctionnement actuel de la planification et les besoins des agents. Ensuite, nous avons posé des questions plus spécifiques sur les fonctionnalités souhaitées dans l'application. Le tout en évitant de poser des questions orientées pour ne pas influencer les réponses.
 
-## 6.1. Objectifs des entretiens
+### 6.1. Objectifs des entretiens
 | Objectif principal | Détail | 
 | -------- | -------- | 
 | Identifier les limitations des systèmes de planification actuels | Excel, appels, messagerie, etc.|
@@ -179,7 +181,7 @@ Nous avons réfléchi à plusieurs questions en essayant d'être le plus exhaust
 | Valider l’intérêt et la disposition à utiliser un outil numérique| Acceptabilité, valeur perçue, préférences UI/UX|
 | Vérifier les freins potentiels à l’adoption| Complexité, login, confidentialité|
 
-### 6.2. Planificateur
+### 6.2. Questions pour les planificateurs
 
 > Quelle est votre méthode de travail actuelle? (workflow)
 
@@ -197,7 +199,7 @@ Nous avons réfléchi à plusieurs questions en essayant d'être le plus exhaust
 
 > Si vous aviez une application pour la planification, à quoi celle-ci ressemblerait?
 
-### 6.3. Agent
+### 6.3. Questions pour les agents
 
 > Expliquez-nous votre travail d'agent, qu'est-ce que vous faites?
 
@@ -256,7 +258,7 @@ Nous avons réalisé quelques wireframes pour visualiser l'interface de l'applic
 
 ![wireframes](/docs/img/wireframes.png)
 
-#### Page home
+#### 8.1.1. Page home
 
 Pour les planificateurs :
 
@@ -266,7 +268,7 @@ Pour les agents :
 
 - La home page contient la liste des événements à venir où l'agent doit intervenir.
 
-#### Page profil
+#### 8.1.2. Page profil
 
 Pour les planificateurs :
 
@@ -276,7 +278,7 @@ Pour les agents :
 
 - La page profil contient les informations de la personne et la possibilité d'accéder à la page des disponibilités.
 
-#### Page calendrier
+#### 8.1.3. Page calendrier
 
 Pour les planificateurs :
 
@@ -286,7 +288,7 @@ Pour les agents :
 
 - La page calendrier contient tous les événements auxquels l'agent intervient.
 
-#### Page disponibilités
+#### 8.1.4. Page disponibilités
 
 Pour les agents :
 
