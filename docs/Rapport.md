@@ -201,6 +201,20 @@ C'est la direction que nous avons décidé de prendre. En effet, cela évite au 
 
 ## Pérennité du projet
 
+Pour assurer la pérennité du projet, nous avons pris en compte plusieurs aspects :
+
+- **Documentation** : Nous avons documenté le code et les choix techniques pour faciliter la prise en main du projet par d'autres développeurs. La documentation est disponible dans le dossier `docs` du dépôt GitHub.
+
+- **Evolutivité** : Nous avons conçu l'application de manière modulaire pour faciliter l'ajout de nouvelles fonctionnalités à l'avenir. Par exemple, nous avons prévu une architecture qui permettrait d'intégrer facilement un système d'authentification plus complexe si nécessaire.
+
+Cependant, il reste encore des points à améliorer pour assurer la pérennité du projet :
+
+- **Tests automatisés** : Nous n'avons pas encore mis en place de tests automatisés pour l'application. Cela reste un point à améliorer pour garantir la stabilité du code et faciliter les évolutions futures.
+
+- **Pipelines CI/CD** : Nous n'avons pas encore mis en place de pipelines d'intégration et de déploiement continu pour automatiser les tests et le déploiement de l'application. Cela reste un point à améliorer pour faciliter la gestion du projet à long terme.
+
+- **Aspects financiers** : Nous n'avons pas encore réfléchi à un modèle économique pour monétiser l'application. Une solution pourrait être de proposer un abonnement mensuel pour les entreprises souhaitant utiliser l'application. Mais cela reste un point à approfondir pour assurer la viabilité financière du projet.
+
 ## Difficultés rencontrées et solutions
 
 ### Prise en main de Next.js
