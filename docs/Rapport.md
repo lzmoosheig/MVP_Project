@@ -191,6 +191,14 @@ Pour résumer, voici les choix technologiques que nous avons faits :
 
 ## Tests utilisateurs
 
+Lors de la phase de tests utilisateurs, notre application n'était pas tout à fait terminée. Cependant, nous avons pu réaliser quelques tests avec des utilisateurs potentiels pour recueillir leurs retours sur l'ergonomie et les fonctionnalités de l'application. Les retours ont été globalement positifs, notamment concernant l'interface, mais nous nous sommes rendus compte d'un changement majeur qui pourrait être apporté à l'application.
+
+### Changement majeur
+
+Au lieu de demander aux agents de transmettre leurs disponibilités, pourquoi ne pas leur demander de s'inscrire directement aux événements? 
+
+C'est la direction que nous avons décidé de prendre. En effet, cela évite au planificateur de devoir gérer les disponibilités des agents et permet aux agents de s'organiser sans avoir à attendre l'approbation du planificateur. Cette manière de faire simplifie grandement la gestion des plannings et permet au planificateur de gagner un temps considérable.
+
 ## Pérennité du projet
 
 ## Difficultés rencontrées et solutions
