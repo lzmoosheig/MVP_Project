@@ -10,6 +10,7 @@ import CardContent from "@mui/material/CardContent";
 import prisma from "@/lib/prisma";
 import { format } from "date-fns";
 import NavLink from "@/components/NavLink";
+import { redirect } from "next/navigation";
 
 const secret = new TextEncoder().encode(process.env.SESSION_SECRET);
 
@@ -29,26 +30,26 @@ export default async function Page() {
     }
   } catch (err) {
     console.error("Erreur de vérification JWT :", err);
+    return <Typography>Erreur d'authentification</Typography>;
   }
 
-  const user = await prisma.user.findUnique({
-    where: { email },
-  });
-
-  if (!user) {
-    return <Typography>Utilisateur introuvable.</Typography>;
-  }
+  const user = await prisma.user.findUnique({ where: { email } });
+  if (!user) return <Typography>Utilisateur introuvable.</Typography>;
 
   canAccessCriticalEvents = user.canAccessCriticalEvents;
 
+  // Redirection selon le rôle
+  if (role === "Planner") {
+    redirect("/dashboard/planner");
+  }
+
+  // Sinon (rôle agent), on affiche les événements disponibles
   const events = await prisma.event.findMany({
     where: {
       startDate: { gte: new Date() },
       ...(canAccessCriticalEvents ? {} : { isCritical: false }),
     },
-    orderBy: {
-      startDate: "asc",
-    },
+    orderBy: { startDate: "asc" },
   });
 
   return (

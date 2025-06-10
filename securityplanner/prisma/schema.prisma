@@ -21,20 +21,23 @@ model Role {
 }
 
 model User {
-  id          Int         @id @default(autoincrement())
-  firstName   String
-  lastName    String
-  birthDate   DateTime
-  address     String
-  postalCode  Int
-  city        String
-  phoneNumber String
-  email       String      @unique
-  password    String
-  roleId      Int
-  role        Role        @relation(fields: [roleId], references: [id])
-  canAccessCriticalEvents Boolean @default(false)
-  Schedules   Schedule[]
+  id                      Int      @id @default(autoincrement())
+  firstName               String
+  lastName                String
+  birthDate               DateTime
+  address                 String
+  postalCode              Int
+  city                    String
+  phoneNumber             String
+  email                   String   @unique
+  password                String
+  roleId                  Int
+  role                    Role     @relation(fields: [roleId], references: [id])
+  canAccessCriticalEvents Boolean  @default(false)
+
+  Schedules        Schedule[]
+  sentMessages     Message[]          @relation("SentMessages")
+  receivedMessages MessageRecipient[] @relation("ReceivedMessages")
 }
 
 model Event {
@@ -43,8 +46,8 @@ model Event {
   description    String?
   startDate      DateTime
   endDate        DateTime
-  location       String?  
-  city           String? 
+  location       String?
+  city           String?
   contactName    String?
   contactPhone   String?
   instructions   String?
@@ -53,21 +56,45 @@ model Event {
   duration       Int?
   meetHour       DateTime?
   isCritical     Boolean   @default(false)
-  createdAt      DateTime @default(now())
-  updatedAt      DateTime? 
+  createdAt      DateTime  @default(now())
+  updatedAt      DateTime?
+
   Schedules Schedule[]
+  messages  Message[]
 }
 
 model Schedule {
-  id           Int       @id @default(autoincrement())
-  startDate    DateTime
-  endDate      DateTime
-  userId       Int
-  eventId      Int
-  status       ScheduleStatus @default(PENDING)
+  id            Int            @id @default(autoincrement())
+  startDate     DateTime
+  endDate       DateTime
+  userId        Int
+  eventId       Int
+  status        ScheduleStatus @default(PENDING)
   refusalReason String?
-  user         User     @relation(fields: [userId], references: [id])
-  event        Event    @relation(fields: [eventId], references: [id])
+
+  user  User  @relation(fields: [userId], references: [id])
+  event Event @relation(fields: [eventId], references: [id])
+}
+
+model Message {
+  id        Int      @id @default(autoincrement())
+  content   String
+  senderId  Int
+  eventId   Int
+  createdAt DateTime @default(now())
+
+  sender     User               @relation("SentMessages", fields: [senderId], references: [id])
+  event      Event              @relation(fields: [eventId], references: [id])
+  recipients MessageRecipient[] @relation("MessageRecipients")
+}
+
+model MessageRecipient {
+  id        Int @id @default(autoincrement())
+  messageId Int
+  userId    Int
+
+  message Message @relation("MessageRecipients", fields: [messageId], references: [id])
+  user    User    @relation("ReceivedMessages", fields: [userId], references: [id])
 }
 
 enum ScheduleStatus {

@@ -15,7 +15,7 @@ const secret = new TextEncoder().encode(process.env.SESSION_SECRET);
 
 export default async function MissionsPage() {
   const cookieStore = cookies();
-  const token = cookieStore.get('token')?.value;
+  const token = (await cookieStore).get('token')?.value;
 
   if (!token) {
     return <Typography>Utilisateur non authentifié.</Typography>;
