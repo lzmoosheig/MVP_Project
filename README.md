@@ -1,6 +1,4 @@
-# MVP_Project
-
-Projet dans le cadre du cours MVP
+# MVP - Projet de planification des agents de sécurité
 
 ## Prérequis
 
@@ -9,41 +7,36 @@ Projet dans le cadre du cours MVP
 
 ## Setup
 
-1. Lancer la base de données :
+### Etape 1
 
-```bash
-cd securityplanner/database
-docker compose up
-```
-
-2. Aller dans le dossier `securityplanner` :
+Allez dans le répertoire du projet :
 
 ```bash
 cd securityplanner
 ```
 
-3. Créer le fichier `.env` en copiant le fichier `.env.example` :
+### Etape 2
 
-```
-DATABASE_URL=postgresql://postgres:example@localhost:5432/securityplanner
-SESSION_SECRET=openssl rand -base64 32
-```
-
-4. Installer les dépendances :
+Mettez en place les variables d'environnement nécessaires en copiant le fichier `.env.example` et en remplaçant les valeurs par défaut (notamment `SESSION_SECRET`) :
 
 ```bash
-npm install
+# Copier le fichier d'exemple des variables d'environnement
+cp .env.example .env
+
+# Générer une clé secrète pour la session et la remplacer dans le fichier .env
+openssl rand -base64 32
 ```
 
-5. Générer la base de données :
+> **Note :** L'url de la base de données ne doit être changée que si vous utilisez votre propre instance, par défaut elle est configurée pour utiliser le conteneur Docker du projet.
+
+### Etape 3
+
+Un script d'installation est disponible pour configurer l'environnement de développement. Il met en place la base de données et les dépendances nécessaires. Exécutez les commandes suivantes :
 
 ```bash
-npx prisma migrate dev --name init
-npx prisma db seed
-```
+# Donner les droits d'exécution au script d'installation
+chmod +x start.sh
 
-6. Lancer le serveur :
-
-```bash
-npm run dev
+# Lancer le script d'installation
+./start.sh
 ```
