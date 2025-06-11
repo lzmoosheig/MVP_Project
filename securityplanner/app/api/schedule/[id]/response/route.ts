@@ -1,11 +1,15 @@
-// app/api/schedule/route.ts
 import { NextRequest, NextResponse } from 'next/server';
 import { jwtVerify } from 'jose';
 import prisma from '@/lib/prisma';
 
 const secret = new TextEncoder().encode(process.env.SESSION_SECRET);
 
-export async function POST(req: NextRequest) {
+export async function PATCH(req: NextRequest, { params }: { params: { id: string } }) {
+  const scheduleId = parseInt(params.id, 10);
+  if (isNaN(scheduleId)) {
+    return NextResponse.json({ error: 'Invalid schedule ID' }, { status: 400 });
+  }
+
   const token = req.cookies.get('token')?.value;
   if (!token) {
     return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
@@ -20,38 +24,27 @@ export async function POST(req: NextRequest) {
   }
 
   const body = await req.json();
-  const { eventId } = body;
+  const { status, reason } = body;
 
-  if (!eventId || typeof eventId !== 'number') {
-    return NextResponse.json({ error: 'Invalid or missing eventId' }, { status: 400 });
+  if (!['ACCEPTED', 'REFUSED'].includes(status)) {
+    return NextResponse.json({ error: 'Invalid status' }, { status: 400 });
   }
 
-  // vérifier que l'événement existe
-  const event = await prisma.event.findUnique({ where: { id: eventId } });
-  if (!event) {
-    return NextResponse.json({ error: 'Event not found' }, { status: 404 });
-  }
-
-  // vérifier qu'il n'y a pas déjà une entrée Schedule pour cet utilisateur et cet événement
-  const existing = await prisma.schedule.findFirst({
-    where: { userId, eventId },
+  const schedule = await prisma.schedule.findUnique({
+    where: { id: scheduleId },
   });
 
-  if (existing) {
-    return NextResponse.json({ error: 'Schedule already exists' }, { status: 400 });
+  if (!schedule || schedule.userId !== userId) {
+    return NextResponse.json({ error: 'Not authorized for this schedule' }, { status: 403 });
   }
 
-  // créer une nouvelle entrée Schedule en statut ACCEPTED
-  const newSchedule = await prisma.schedule.create({
+  await prisma.schedule.update({
+    where: { id: scheduleId },
     data: {
-      userId,
-      eventId,
-      startDate: event.startDate,
-      endDate: event.endDate,
-      status: 'ACCEPTED',
-      refusalReason: null,
+      status,
+      refusalReason: status === 'REFUSED' ? reason : null,
     },
   });
 
-  return NextResponse.json({ message: 'Schedule created', scheduleId: newSchedule.id }, { status: 201 });
+  return NextResponse.json({ message: 'Status updated' });
 }

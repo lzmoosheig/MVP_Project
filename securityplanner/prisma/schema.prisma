@@ -71,6 +71,7 @@ model Schedule {
   eventId       Int
   status        ScheduleStatus @default(PENDING)
   refusalReason String?
+  reminderSent Boolean   @default(false)
 
   user  User  @relation(fields: [userId], references: [id])
   event Event @relation(fields: [eventId], references: [id])
