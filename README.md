@@ -40,3 +40,23 @@ chmod +x start.sh
 # Lancer le script d'installation
 ./start.sh
 ```
+
+## Utilisation
+
+### Accès à l'application
+
+Dans un navigateur, accédez à l'URL suivante pour utiliser l'application :
+
+```
+http://localhost:3000
+```
+
+### Credentials par défaut
+
+**Pour le compte planificateur :**
+- **Email :** alice@example.com
+- **Mot de passe :** test123
+
+**Pour le compte agent :**
+- **Email :** bob@example.com
+- **Mot de passe :** test123
