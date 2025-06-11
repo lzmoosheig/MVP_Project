@@ -23,6 +23,7 @@ import AssignmentIcon from "@mui/icons-material/Assignment";
 import NotificationsIcon from '@mui/icons-material/Notifications';
 import Badge from '@mui/material/Badge';
 import NavLink from "@/components/NavLink";
+import HourglassBottomIcon from '@mui/icons-material/HourglassBottom';
 import 'leaflet/dist/leaflet.css';
 
 const drawerWidth = 240;
@@ -137,6 +138,11 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
             <NavLink href="/dashboard/missions">
               <ListItemIcon><AssignmentIcon /></ListItemIcon>
               <ListItemText primary="Mes missions" />
+            </NavLink>
+
+            <NavLink href="/dashboard/pendingMission">
+              <ListItemIcon><HourglassBottomIcon /></ListItemIcon>
+              <ListItemText primary="Missions en attente" />
             </NavLink>
 
             <NavLink href="/dashboard/messages">

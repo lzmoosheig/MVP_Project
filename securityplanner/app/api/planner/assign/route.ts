@@ -29,9 +29,9 @@ export async function POST(req: NextRequest) {
       data: {
         userId,
         eventId,
-        startDate: new Date(), // Optionnel: à adapter selon ton besoin
-        endDate: new Date(),   // Optionnel: idem
-        status: 'ACCEPTED',
+        startDate: new Date(), 
+        endDate: new Date(),   
+        status: 'PENDING',
       },
     });
 

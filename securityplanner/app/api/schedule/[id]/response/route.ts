@@ -1,3 +1,5 @@
+// app/api/schedule/[id]/response/route.ts
+
 import { NextRequest, NextResponse } from 'next/server';
 import { jwtVerify } from 'jose';
 import prisma from '@/lib/prisma';
@@ -30,21 +32,28 @@ export async function PATCH(req: NextRequest, { params }: { params: { id: string
     return NextResponse.json({ error: 'Invalid status' }, { status: 400 });
   }
 
-  const schedule = await prisma.schedule.findUnique({
-    where: { id: scheduleId },
-  });
+  try {
+    const schedule = await prisma.schedule.findUnique({
+      where: { id: scheduleId },
+    });
 
-  if (!schedule || schedule.userId !== userId) {
-    return NextResponse.json({ error: 'Not authorized for this schedule' }, { status: 403 });
+    if (!schedule || schedule.userId !== userId) {
+      return NextResponse.json({ error: 'Not authorized for this schedule' }, { status: 403 });
+    }
+
+    await prisma.schedule.update({
+      where: { id: scheduleId },
+      data: {
+        status, // ACCEPTED ou REFUSED
+        refusalReason: status === 'REFUSED' ? reason : null,
+        reminderSent: false 
+      },
+    });
+
+    return NextResponse.json({ message: 'Status updated' }, { status: 200 });
+
+  } catch (err) {
+    console.error('Schedule update failed:', err);
+    return NextResponse.json({ error: 'Internal server error' }, { status: 500 });
   }
-
-  await prisma.schedule.update({
-    where: { id: scheduleId },
-    data: {
-      status,
-      refusalReason: status === 'REFUSED' ? reason : null,
-    },
-  });
-
-  return NextResponse.json({ message: 'Status updated' });
 }

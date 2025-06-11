@@ -18,9 +18,11 @@ export async function GET(req: NextRequest) {
         status: 'PENDING',
         reminderSent: true
       },
-      include: { event: true }
+      include: { event: true },
+      orderBy: { createdAt: 'asc' } // toujours le plus ancien d'abord (évite d'en afficher plusieurs d'affilée)
     });
 
+    // ✅ si plus aucun schedule matching, on désactive la notif
     if (!pendingReminder) {
       return NextResponse.json({ hasReminder: false });
     }

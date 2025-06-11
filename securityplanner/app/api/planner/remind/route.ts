@@ -19,12 +19,13 @@ export async function POST(req: NextRequest) {
 
     const { eventId } = await req.json();
 
-    if (!eventId || isNaN(eventId)) {
+    if (!eventId || typeof eventId !== 'number' || isNaN(eventId)) {
       return NextResponse.json({ error: 'Invalid eventId' }, { status: 400 });
     }
 
+    // Cherche tous les schedules en attente qui n'ont pas encore reçu de rappel
     const schedules = await prisma.schedule.findMany({
-      where: { eventId, status: 'PENDING' },
+      where: { eventId, status: 'PENDING', reminderSent: false },
       include: { user: true }
     });
 
@@ -32,16 +33,18 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ message: 'Aucun agent à rappeler' });
     }
 
+    // Marquer les schedules comme rappelés
     await prisma.schedule.updateMany({
       where: { eventId, status: 'PENDING', reminderSent: false },
       data: { reminderSent: true },
     });
 
+    // Log simple pour debug (non bloquant)
     schedules.forEach(schedule => {
       console.log(`🔔 Rappel envoyé à ${schedule.user.firstName} ${schedule.user.lastName} (${schedule.user.email})`);
     });
 
-    return NextResponse.json({ message: 'Rappel envoyé à tous les agents en attente' });
+    return NextResponse.json({ message: `Rappel envoyé à ${schedules.length} agents.` });
 
   } catch (err) {
     console.error('[REMIND ERROR]', err);
