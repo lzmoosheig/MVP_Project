@@ -60,7 +60,6 @@ export default function AssignPage() {
         throw new Error(errorData?.error || 'Échec de l’assignation');
       }
 
-      // Affiche un popup et redirige
       alert('Agent assigné avec succès');
       window.location.href = '/dashboard/planner';
 

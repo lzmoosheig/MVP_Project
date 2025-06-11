@@ -59,7 +59,7 @@ export default function LoginPage() {
         if (response.ok) {
             router.push('/dashboard/home')
         } else {
-            // Handle errors
+            router.push('/login')
         }
     }
 

@@ -2,17 +2,15 @@ import { PrismaClient } from './generated/prisma';
 const prisma = new PrismaClient()
 
 async function main() {
-  // Clear existing data (optionnel, pour dev uniquement)
+
   await prisma.schedule.deleteMany()
   await prisma.event.deleteMany()
   await prisma.user.deleteMany()
   await prisma.role.deleteMany()
 
-  // Seed Roles
   const planner = await prisma.role.create({ data: { name: 'Planner' } });
   const agent = await prisma.role.create({ data: { name: 'Agent' } });
 
-  // Seed Users
   const alice = await prisma.user.create({
     data: {
       firstName: 'Alice',
