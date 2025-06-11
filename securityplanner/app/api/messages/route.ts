@@ -1,4 +1,3 @@
-// app/api/messages/route.ts
 import { NextRequest, NextResponse } from 'next/server';
 import prisma from '@/lib/prisma';
 import { jwtVerify } from 'jose';
@@ -44,10 +43,11 @@ export async function POST(req: NextRequest) {
       },
     });
 
-    // Créer les entrées dans la table MessageRecipient
+    // Créer les entrées dans la table MessageRecipient avec isRead = false
     const recipients = schedules.map(s => ({
       messageId: message.id,
       userId: s.userId,
+      isRead: false,
     }));
 
     if (recipients.length > 0) {

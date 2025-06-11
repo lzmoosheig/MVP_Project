@@ -11,6 +11,7 @@ import prisma from "@/lib/prisma";
 import { format } from "date-fns";
 import NavLink from "@/components/NavLink";
 import { redirect } from "next/navigation";
+import MailIcon from '@mui/icons-material/Mail'; // Ajout de l'icône
 
 const secret = new TextEncoder().encode(process.env.SESSION_SECRET);
 
@@ -57,7 +58,7 @@ export default async function Page() {
       <Typography variant="h5" gutterBottom>
         Bonjour {user.firstName}, votre rôle : {role}
       </Typography>
-
+      
       <Typography variant="h6" sx={{ mt: 4, mb: 2 }}>
         Événements disponibles
       </Typography>

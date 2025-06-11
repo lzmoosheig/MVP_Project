@@ -1,6 +1,6 @@
 'use client';
 
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Box from "@mui/material/Box";
 import { styled, createTheme, ThemeProvider } from "@mui/material/styles";
 import CssBaseline from "@mui/material/CssBaseline";
@@ -20,6 +20,8 @@ import HomeIcon from "@mui/icons-material/Home";
 import LogoutIcon from "@mui/icons-material/Logout";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import AssignmentIcon from "@mui/icons-material/Assignment";
+import NotificationsIcon from '@mui/icons-material/Notifications';
+import Badge from '@mui/material/Badge';
 import NavLink from "@/components/NavLink";
 import 'leaflet/dist/leaflet.css';
 
@@ -81,11 +83,19 @@ const defaultTheme = createTheme({
 });
 
 export default function DashboardLayout({ children }: { children: React.ReactNode }) {
-  const [open, setOpen] = React.useState(true);
+  const [open, setOpen] = useState(true);
+  const [unread, setUnread] = useState(0);
 
   const toggleDrawer = () => {
     setOpen(!open);
   };
+
+  useEffect(() => {
+    fetch('/api/messages/unread')
+      .then(res => res.json())
+      .then(data => setUnread(data.count))
+      .catch(() => setUnread(0));
+  }, []);
 
   return (
     <ThemeProvider theme={defaultTheme}>
@@ -93,16 +103,7 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
         <CssBaseline />
         <AppBar position="absolute" open={open}>
           <Toolbar sx={{ pr: "24px" }}>
-            <IconButton
-              edge="start"
-              color="inherit"
-              aria-label="open drawer"
-              onClick={toggleDrawer}
-              sx={{
-                marginRight: "36px",
-                ...(open && { display: "none" }),
-              }}
-            >
+            <IconButton edge="start" color="inherit" aria-label="open drawer" onClick={toggleDrawer} sx={{ marginRight: "36px", ...(open && { display: "none" }) }}>
               <MenuIcon />
             </IconButton>
             <Typography component="h1" variant="h6" color="inherit" noWrap sx={{ flexGrow: 1 }}>
@@ -113,20 +114,15 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
             </Box>
           </Toolbar>
         </AppBar>
+
         <Drawer variant="permanent" open={open}>
-          <Toolbar
-            sx={{
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "flex-end",
-              px: [1],
-            }}
-          >
+          <Toolbar sx={{ display: "flex", alignItems: "center", justifyContent: "flex-end", px: [1] }}>
             <IconButton onClick={toggleDrawer}>
               <ChevronLeftIcon />
             </IconButton>
           </Toolbar>
           <Divider />
+
           <List component="nav">
             <NavLink href="/dashboard/home">
               <ListItemIcon><HomeIcon /></ListItemIcon>
@@ -143,31 +139,23 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
               <ListItemText primary="Mes missions" />
             </NavLink>
 
-            <NavLink
-              href="#"
-              onClick={async (e) => {
-                e.preventDefault();
-                await fetch("/api/auth/logout", { method: "POST" });
-                window.location.href = "/login";
-              }}
-            >
+            <NavLink href="/dashboard/messages">
+              <ListItemIcon>
+                <Badge badgeContent={unread} color="error">
+                  <NotificationsIcon />
+                </Badge>
+              </ListItemIcon>
+              <ListItemText primary="Mes messages" />
+            </NavLink>
+
+            <NavLink href="#" onClick={async (e) => { e.preventDefault(); await fetch("/api/auth/logout", { method: "POST" }); window.location.href = "/login"; }}>
               <ListItemIcon><LogoutIcon /></ListItemIcon>
               <ListItemText primary="Logout" />
             </NavLink>
           </List>
         </Drawer>
-        <Box
-          component="main"
-          sx={{
-            backgroundColor: (theme) =>
-              theme.palette.mode === "light"
-                ? theme.palette.grey[100]
-                : theme.palette.grey[900],
-            flexGrow: 1,
-            height: "100vh",
-            overflow: "auto",
-          }}
-        >
+
+        <Box component="main" sx={{ backgroundColor: (theme) => theme.palette.mode === "light" ? theme.palette.grey[100] : theme.palette.grey[900], flexGrow: 1, height: "100vh", overflow: "auto" }}>
           <Toolbar />
           <Container maxWidth="xl" sx={{ mt: 4, mb: 4 }}>
             {children}

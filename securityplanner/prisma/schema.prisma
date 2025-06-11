@@ -92,6 +92,7 @@ model MessageRecipient {
   id        Int @id @default(autoincrement())
   messageId Int
   userId    Int
+  isRead    Boolean                    @default(false)
 
   message Message @relation("MessageRecipients", fields: [messageId], references: [id])
   user    User    @relation("ReceivedMessages", fields: [userId], references: [id])
