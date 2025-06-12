@@ -1,3 +1,12 @@
+/**
+ * @description Récupérer les informations de l'utilisateur connecté
+ * @author Léo Zmoos
+ * @param cookies - Les cookies de l'utilisateur
+ * @param prisma - La base de données Prisma
+ * @param NextResponse - La réponse de Next.js
+ * @returns Une réponse JSON contenant les informations de l'utilisateur connecté
+ * @throws Une erreur si l'utilisateur n'est pas connecté ou si
+ */
 'use client';
 
 import React, { useEffect, useState } from "react";

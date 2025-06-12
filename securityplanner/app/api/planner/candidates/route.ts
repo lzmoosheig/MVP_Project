@@ -1,4 +1,6 @@
-// app/api/planner/candidates/route.ts
+/**
+ * GET /api/planner/assign/route
+ */
 import { NextResponse } from 'next/server';
 import { cookies } from 'next/headers';
 import { jwtVerify } from 'jose';
@@ -14,7 +16,7 @@ export async function GET(req: Request) {
       return NextResponse.json({ error: 'Invalid event ID' }, { status: 400 });
     }
 
-    const token = cookies().get('token')?.value;
+    const token = (await cookies()).get('token')?.value;
     if (!token) {
       return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
     }

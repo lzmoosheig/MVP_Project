@@ -1,3 +1,13 @@
+/**
+ * @description Récupérer les informations d'un événement
+ * @author Léo Zmoos, Dylan José Oliveira Ramos
+ * @param id - L'identifiant de l'événement à récupérer
+ * @param cookies - Les cookies de l'utilisateur
+ * @param prisma - La base de données Prisma
+ * @param secret - La clé secrète pour vérifier l'authentification
+ * @param NextResponse - La réponse de Next.js
+ * @returns Une réponse JSON contenant les informations de l'événement
+ */
 import { cookies } from "next/headers";
 import { jwtVerify } from "jose";
 import prisma from "@/lib/prisma";
@@ -99,10 +109,6 @@ export default async function EventDetailsPage({ params }: { params: { id: strin
         </Typography>
       </Paper>
 
-      {/*
-        Afficher les actions dans tous les cas,
-        même si aucun schedule n'existe encore
-      */}
       <EventActionsWrapper
         eventId={event.id}
         scheduleId={schedule?.id ?? null}

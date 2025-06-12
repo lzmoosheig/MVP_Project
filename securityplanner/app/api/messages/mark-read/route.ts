@@ -1,3 +1,6 @@
+/**
+ * GET /api/planner/candidates/mark-read
+ */
 import { NextRequest, NextResponse } from 'next/server';
 import prisma from '@/lib/prisma';
 import { jwtVerify } from 'jose';
@@ -17,7 +20,6 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ error: 'Forbidden' }, { status: 403 });
     }
 
-    // Mettre à jour tous les messages non lus de cet utilisateur
     await prisma.messageRecipient.updateMany({
       where: {
         userId,

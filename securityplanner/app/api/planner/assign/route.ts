@@ -1,4 +1,6 @@
-// app/api/planner/assign/route.ts
+/**
+ * POST /api/planner/assign/route
+ */
 import { NextRequest, NextResponse } from 'next/server';
 import { jwtVerify } from 'jose';
 import prisma from '@/lib/prisma';
@@ -24,7 +26,6 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ error: 'Missing parameters' }, { status: 400 });
     }
 
-    // Créer une assignation PENDING
     await prisma.schedule.create({
       data: {
         userId,

@@ -1,3 +1,6 @@
+/**
+ * Route handler for the POST request to create a new reminder
+ */
 import { NextRequest, NextResponse } from 'next/server';
 import { jwtVerify } from 'jose';
 import prisma from '@/lib/prisma';
@@ -39,7 +42,7 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ message: 'Schedule created', id: newSchedule.id }, { status: 201 });
 
   } catch (err) {
-    console.error('[POST /api/schedule] ❌ ERREUR :', err);
+    console.error('[POST /api/schedule] ERREUR :', err);
     return NextResponse.json({ error: 'Internal Server Error' }, { status: 500 });
   }
 }

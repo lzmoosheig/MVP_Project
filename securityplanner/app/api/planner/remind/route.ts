@@ -1,3 +1,6 @@
+/**
+ * Route handler for the POST request to create a new reminder.
+ */
 import { NextRequest, NextResponse } from 'next/server';
 import { jwtVerify } from 'jose';
 import prisma from '@/lib/prisma';
@@ -41,7 +44,7 @@ export async function POST(req: NextRequest) {
 
     // Log simple pour debug (non bloquant)
     schedules.forEach(schedule => {
-      console.log(`🔔 Rappel envoyé à ${schedule.user.firstName} ${schedule.user.lastName} (${schedule.user.email})`);
+      console.log(`Rappel envoyé à ${schedule.user.firstName} ${schedule.user.lastName} (${schedule.user.email})`);
     });
 
     return NextResponse.json({ message: `Rappel envoyé à ${schedules.length} agents.` });

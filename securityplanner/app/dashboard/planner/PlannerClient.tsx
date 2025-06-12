@@ -1,3 +1,9 @@
+/** 
+ * @author Léo Zmoos, Dylan José Oliveira Ramos
+ * @param id - L'identifiant de l'événement à récupérer
+ * @param prisma - La base de données Prisma
+ * @param NextResponse - La réponse de Next.js
+ */
 'use client';
 
 import React, { useState } from "react";

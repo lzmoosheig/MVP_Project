@@ -4,8 +4,6 @@ import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
 import L from 'leaflet';
 import 'leaflet/dist/leaflet.css';
 import { useEffect } from 'react';
-
-// Fix icons manually for Leaflet with Webpack/Turbopack
 import markerIcon2x from 'leaflet/dist/images/marker-icon-2x.png';
 import markerIcon from 'leaflet/dist/images/marker-icon.png';
 import markerShadow from 'leaflet/dist/images/marker-shadow.png';
@@ -26,7 +24,6 @@ interface Props {
 
 export default function EventMap({ latitude, longitude, label }: Props) {
   useEffect(() => {
-    // ensures CSS is applied
     import('leaflet/dist/leaflet.css');
   }, []);
 

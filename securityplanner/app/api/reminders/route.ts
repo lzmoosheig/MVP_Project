@@ -1,3 +1,6 @@
+/**
+ * Route handler for the GET request to retrieve all reminders.
+ */
 import { NextRequest, NextResponse } from 'next/server';
 import { jwtVerify } from 'jose';
 import prisma from '@/lib/prisma';
@@ -19,10 +22,10 @@ export async function GET(req: NextRequest) {
         reminderSent: true
       },
       include: { event: true },
-      orderBy: { createdAt: 'asc' } // toujours le plus ancien d'abord (évite d'en afficher plusieurs d'affilée)
+      orderBy: { createdAt: 'asc' }
     });
 
-    // ✅ si plus aucun schedule matching, on désactive la notif
+    // si plus aucun schedule matching, on désactive la notif
     if (!pendingReminder) {
       return NextResponse.json({ hasReminder: false });
     }

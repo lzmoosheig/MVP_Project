@@ -19,7 +19,12 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ error: 'Invalid eventId' }, { status: 400 });
     }
 
-    // Delete event (cascading deletes will be handled by Prisma relations if defined)
+    // Supprimer d'abord les schedules liés à l'événement
+    await prisma.schedule.deleteMany({
+      where: { eventId: eventId }
+    });
+
+    // Ensuite supprimer l'événement
     await prisma.event.delete({
       where: { id: eventId }
     });

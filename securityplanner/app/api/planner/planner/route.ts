@@ -1,3 +1,6 @@
+/**
+ * GET /api/planner/candidates/route
+ */
 import { NextRequest, NextResponse } from 'next/server';
 import prisma from '@/lib/prisma';
 import { jwtVerify } from 'jose';
@@ -33,10 +36,8 @@ export async function POST(req: NextRequest) {
       }
     });
 
-    // Simuler l'envoi de notification (à remplacer plus tard)
     pendingAgents.forEach(agent => {
-      console.log(`🔔 Envoi d'un rappel à ${agent.user.firstName} (${agent.user.email})`);
-      // Ici tu pourras plus tard brancher du WebPush ou autre
+      console.log(`Envoi d'un rappel à ${agent.user.firstName} (${agent.user.email})`);
     });
 
     return NextResponse.json({ message: `${pendingAgents.length} rappels envoyés.` });

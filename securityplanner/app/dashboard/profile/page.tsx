@@ -1,3 +1,9 @@
+/**
+ * @author Léo Zmoos, Dylan José Oliveira Ramos
+ * @param id - L'identifiant de l'utilisateur
+ * @param prisma - La base de données Prisma
+ * @param NextResponse - La réponse de Next.js
+ */
 import { cookies } from "next/headers";
 import { jwtVerify } from "jose";
 import prisma from "@/lib/prisma";

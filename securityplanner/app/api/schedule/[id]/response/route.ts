@@ -1,5 +1,6 @@
-// app/api/schedule/[id]/response/route.ts
-
+/**
+ * Route handler for the PATCH request to update a reminder
+ */
 import { NextRequest, NextResponse } from 'next/server';
 import { jwtVerify } from 'jose';
 import prisma from '@/lib/prisma';

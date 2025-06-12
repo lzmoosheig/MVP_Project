@@ -95,7 +95,6 @@ export default function EventActionsWrapper({
     );
   }
 
-  // Si aucune décision encore prise
   return (
     <Box sx={{ mt: 3 }}>
       <Button

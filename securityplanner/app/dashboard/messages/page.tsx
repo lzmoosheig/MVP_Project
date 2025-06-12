@@ -1,3 +1,10 @@
+/**
+ * @description Récupérer les messages d'un utilisateur
+ * @author Léo Zmoos
+ * @param userId - L'identifiant de l'utilisateur
+ * @param prisma - La base de données Prisma
+ * @param NextResponse - La réponse de Next.js
+ */
 'use client';
 
 import React, { useEffect, useState } from 'react';

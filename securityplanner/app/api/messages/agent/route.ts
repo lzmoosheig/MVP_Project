@@ -1,3 +1,6 @@
+/**
+ * GET /api/agent/candidates/route
+ */
 import { NextRequest, NextResponse } from 'next/server';
 import prisma from '@/lib/prisma';
 import { jwtVerify } from 'jose';
