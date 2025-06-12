@@ -1,5 +1,8 @@
 # MVP - Projet de planification des agents de sécurité
 
+## Landing Page
+La landing page du projet est accessible à cette URL: https://www.zmoos.net
+
 ## Prérequis
 
 - Node.js
