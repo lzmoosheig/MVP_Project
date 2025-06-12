@@ -111,7 +111,7 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
               Tableau de bord
             </Typography>
             <Box sx={{ flexShrink: 0, display: "flex", justifyContent: "center" }}>
-              <img src="/TODO.png" alt="Logo" style={{ height: 50 }} />
+              <img src="/logo.png" alt="Logo" style={{ height: 50 }} />
             </Box>
           </Toolbar>
         </AppBar>

@@ -1,5 +1,26 @@
 #!/bin/bash
 
+echo "=== Création automatique du fichier .env ==="
+
+# Générer le SESSION_SECRET
+SESSION_SECRET=$(openssl rand -base64 32)
+
+# Définir les paramètres de la base de données (modifiable si besoin)
+DB_USER="postgres"
+DB_PASSWORD="example"
+DB_HOST="localhost"
+DB_PORT="5432"
+DB_NAME="securityplanner"
+
+# Générer DATABASE_URL
+DATABASE_URL="postgresql://${DB_USER}:${DB_PASSWORD}@${DB_HOST}:${DB_PORT}/${DB_NAME}"
+
+# Écrire dans le fichier .env
+cat > .env <<EOF
+DATABASE_URL=${DATABASE_URL}
+SESSION_SECRET=${SESSION_SECRET}
+EOF
+
 echo "=== Lancement de la base de données..."
 cd database
 docker compose up -d
